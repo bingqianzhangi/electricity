@@ -2,12 +2,9 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",
-<<<<<<< HEAD
-    "pages/content/shopDetail/main"
-=======
+    "pages/content/shopDetail/main",
     "pages/counter/main",
     "pages/classify/main"
->>>>>>> e12e31305b49b369ff9ed09b9930d7babc9cdff6
   ],
   "window": {
     "backgroundTextStyle": "light",
