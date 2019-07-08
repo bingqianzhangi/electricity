@@ -1,5 +1,7 @@
 <template>
-  <div>首页</div>
+  <div>首页
+    <p onClick="handletab" >今日推荐</p>
+  </div>
 </template>
 
 <script>
@@ -17,7 +19,12 @@ export default {
   },
 
   methods: {
-    
+    handletab(){
+      console.log(1),
+      wx.navigateTo({
+        url:'pages/classify/main'
+      })
+    }
   },
 
   created () {
