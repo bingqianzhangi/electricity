@@ -1,10 +1,9 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/my/main",
+    "pages/my/main",  
     "pages/content/shopDetail/main",
-    "pages/counter/main",
-    "pages/classify/main"
+    "pages/content/classify/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
