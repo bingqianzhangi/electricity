@@ -87,7 +87,16 @@ export default {
 
   components: { card },
 
-  methods: {},
+
+
+  methods: {
+    handletab(){
+      console.log(1),
+      wx.navigateTo({
+        url:'pages/classify/main'
+      })
+    }
+  },
 
   created() {}
 };
