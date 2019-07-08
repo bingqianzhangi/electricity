@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",
-    "pages/counter/main"
+    "pages/counter/main",
+    "pages/content/labelDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
