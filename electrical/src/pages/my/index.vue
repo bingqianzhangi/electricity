@@ -1,23 +1,20 @@
 <template>
-  <div>首页</div>
+  <div>
+      我的
+  </div>
 </template>
 
 <script>
 
-
 export default {
+  components: {
+    
+  },
+
   data () {
     return {
-      
+     
     }
-  },
-
-  components: {
-
-  },
-
-  methods: {
-    
   },
 
   created () {
@@ -26,6 +23,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
