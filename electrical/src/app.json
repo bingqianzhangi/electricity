@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",
-    "pages/counter/main"
+    "pages/content/shopDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
