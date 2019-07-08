@@ -21,15 +21,20 @@
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">
-            <!-- <img :src="item.imgUrl" class="swiper" /> -->
-            11
+            <img :src="list[1].items[0].imgUrl" alt />
           </div>
           <div class="top-right">
-            <div class="top-right-img">22</div>
-            <div>33</div>
+            <div class="top-right-img">
+              <img :src="list[1].items[1].imgUrl" alt />
+            </div>
+            <div class="data-img">
+              <img :src="list[1].items[2].imgUrl" alt />
+            </div>
           </div>
         </div>
-        <div class="top-bottom"></div>
+        <div class="top-bottom">
+          <img :src="list[3].pictUrl" alt />
+        </div>
       </div>
       <div class="main-sift">
         <div class="main-sift-box">
@@ -48,7 +53,94 @@
             <div class="main-sift-every-div">{{item.title}}</div>
             <h2>${{item.salesPrice}}</h2>
           </div>
-          <div class="top-bottom"></div>
+          <div class="top-bottom">
+            <img :src="list[5].pictUrl" alt />
+          </div>
+        </div>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <div class="main-sift-goods">
+          <div class="main-sift-every" v-for="(item,index) in list[6].items" :key="index">
+            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <div class="main-sift-every-div">{{item.title}}</div>
+            <h2>${{item.salesPrice}}</h2>
+          </div>
+          <div class="top-bottom">
+            <img :src="list[7].pictUrl" alt />
+          </div>
+        </div>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <div class="main-sift-goods">
+          <div class="main-sift-every" v-for="(item,index) in list[8].items" :key="index">
+            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <div class="main-sift-every-div">{{item.title}}</div>
+            <h2>${{item.salesPrice}}</h2>
+          </div>
+          <div class="top-bottom">
+            <img :src="list[9].pictUrl" alt />
+          </div>
+        </div>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <div class="main-sift-goods">
+          <div class="main-sift-every" v-for="(item,index) in list[10].items" :key="index">
+            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <div class="main-sift-every-div">{{item.title}}</div>
+            <h2>${{item.salesPrice}}</h2>
+          </div>
+          <div class="top-bottom">
+            <img :src="list[11].pictUrl" alt />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-sift">
+      <div class="main-sift-box">
+        <div class="main-sift-left">
+          <h1>精选好物</h1>
+          <span class="main-sift-span"></span>
+          <span>等你来抢</span>
+        </div>
+        <div class="main-sift-right">
+          <span>更多></span>
+        </div>
+      </div>
+      <div class="main-sift-goods">
+        <div class="main-sift-every" v-for="(item,index) in list[12].items" :key="index">
+          <img :src="item.imgUrl" class="main-sift-every-img" />
+          <div class="main-sift-every-div">{{item.title}}</div>
+          <h2>${{item.salesPrice}}</h2>
         </div>
       </div>
     </div>
@@ -77,12 +169,10 @@ export default {
       Goothing: "index/Index"
     }),
     switchTab: function(prompt, res) {
-      // console.log(prompt,res);
       let oIndex = res.mp.currentTarget.dataset.current;
       this.currentTab = oIndex;
     },
     switchItem: function(prompt, res) {
-      // console.log(prompt,res.mp.detail.current);
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
     }
@@ -94,6 +184,18 @@ export default {
 </script>
 
 <style scoped>
+.top-right-img img {
+  width: 100%;
+  height: 100%;
+}
+.top-left img {
+  width: 100%;
+  height: 100%;
+}
+.data-img img {
+  width: 100%;
+  height: 100%;
+}
 .main-sift {
   margin-top: 4%;
 }
@@ -111,13 +213,12 @@ export default {
   width: 84%;
 }
 .main-sift-left h1 {
-  font-size: 22px;
+  font-size: 20px;
 }
 .main-sift-span {
   display: inline-block;
   width: 3px;
   height: 26px;
-  background: #cdcdcf;
   margin-top: 3%;
   margin: 3%;
 }
@@ -129,22 +230,18 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* padding-left: 3%; */
 }
 .main-sift-every {
   width: 31%;
   height: 218px;
-  background: darksalmon;
   margin-left: 2%;
   margin-top: 2%;
 }
 .main-sift-every-img {
   width: 100%;
   height: 128px;
-  background: saddlebrown;
 }
 .main-sift-every-div {
-  /* width: 100%; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -161,10 +258,13 @@ export default {
 .top-bottom {
   width: 94%;
   height: 110px;
-  background: antiquewhite;
-  /* padding-left: 3%; */
-  border-radius: 20px;
+  border-radius: 22px;
   margin-top: 1%;
+}
+.top-bottom img {
+  height: 100%;
+  width: 100%;
+  border-radius: 22px;
 }
 .top-nav {
   width: 100%;
