@@ -2,7 +2,12 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",
+<<<<<<< HEAD
     "pages/content/shopDetail/main"
+=======
+    "pages/counter/main",
+    "pages/classify/main"
+>>>>>>> e12e31305b49b369ff9ed09b9930d7babc9cdff6
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,30 +20,35 @@
     "backgroundColor": "#fff",
     "selectedColor": "#45D9E9",
     "borderStyle": "black",
-
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/images/shouye.png",
-      "selectedIconPath": "static/images/shouye_active.png"
-    }, {
-      "text": "我的",
-      "pagePath": "pages/my/main",
-      "iconPath": "static/images/my.png",
-      "selectedIconPath": "static/images/my_active.png"
-    }],
-
-    "items": [{
-      "name": "首页",
-      "pagePath": "pages/index/main",
-      "icon": "static/images/shouye.png",
-      "activeIcon": "static/images/shouye_active.png"
-    }, {
-      "name": "我的",
-      "pagePath": "pages/my/main",
-      "icon": "static/images/my.png",
-      "activeIcon": "static/images/my_active.png"
-    }],
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/images/shouye.png",
+        "selectedIconPath": "static/images/shouye_active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/my/main",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my_active.png"
+      }
+    ],
+    "items": [
+      {
+        "name": "首页",
+        "pagePath": "pages/index/main",
+        "icon": "static/images/shouye.png",
+        "activeIcon": "static/images/shouye_active.png"
+      },
+      {
+        "name": "我的",
+        "pagePath": "pages/my/main",
+        "icon": "static/images/my.png",
+        "activeIcon": "static/images/my_active.png"
+      }
+    ],
     "position": "bottom"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
