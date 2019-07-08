@@ -5,13 +5,13 @@
         <view id="green" class="scroll-view-item_W">今日推荐</view>
         <view id="red" class="scroll-view-item_W">奶粉</view>
         <view id="yellow" class="scroll-view-item_W">尿不湿</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
-        <view id="blue" class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
+        <view class="scroll-view-item_W">运动户外</view>
       </scroll-view>
     </view>
     <view class='main'>
@@ -158,17 +158,17 @@
 </template>
 <script>
   export default {
-  data() {
-    return {};
-  },
-  methods: {
-   
-  },
+    data() {
+      return {};
+    },
+    methods: {
 
-  created() {
-    
-  }
-};
+    },
+
+    created() {
+
+    }
+  };
 </script>
 
 <style scoped>

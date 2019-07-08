@@ -36,7 +36,7 @@
 				{
 					"id": 0,
 					"name": "tab切换",
-					"pathName": "pages/classify/main",
+					"pathName": "pages/content/classify/main",
 					"query": "",
 					"scene": null
 				}
