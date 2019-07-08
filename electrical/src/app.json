@@ -1,8 +1,7 @@
 {
   "pages": [
     "pages/index/main",
-    "pages/my/main",
-    "pages/counter/main",
+    "pages/my/main",  
     "pages/classify/main"
   ],
   "window": {
