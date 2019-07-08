@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",  
+    "pages/content/shopDetail/main",
     "pages/classify/main"
   ],
   "window": {
