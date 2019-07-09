@@ -24,20 +24,14 @@ export default {
   data() {
     return {};
   },
-
-  components: { card },
-
-
-
+  components: { card, products },
   methods: {
     handletab(){
-      console.log(1),
       wx.navigateTo({
         url:'pages/classify/main'
       })
     }
   },
-
   created() {}
 };
 </script>

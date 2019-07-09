@@ -54,7 +54,7 @@
             <button class="buy_btn" @click="buy">立即购买</button>
         </div>
         <div class="type_mack" v-if="show">
-            <Type :hasShow="show" />
+            <Type :hasShow="show" @closeShow="close" />
         </div>
     </div>
 </template>
@@ -74,7 +74,10 @@ export default {
     methods: {
         buy(){
             this.show = true;
-        }
+        },
+        close(){
+            this.show=false;
+        }     
     },
 }
 </script>

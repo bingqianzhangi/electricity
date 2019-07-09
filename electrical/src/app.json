@@ -4,7 +4,8 @@
     "pages/my/main",  
     "pages/content/shopDetail/main",
     "pages/content/classify/main",
-    "pages/content/labelDetail/main"
+    "pages/content/labelDetail/main",
+    "pages/content/submitOrder/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
