@@ -80,12 +80,13 @@
 
 <script>
 import card from "@/components/card";
+import products from "@/components/products";
 export default {
   data() {
     return {};
   },
 
-  components: { card },
+  components: { card ,products},
 
 
 
