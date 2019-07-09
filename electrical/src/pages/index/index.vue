@@ -28,22 +28,13 @@ export default {
     return {};
   },
 
-<<<<<<< HEAD
   components: { card, products },
   computed: {
     ...mapState({
       list: state => state.index.tablist
     })
   },
-<<<<<<< HEAD
-=======
-  components: { card ,products},
 
-
-
->>>>>>> 83914513cd7a5d99f6a9050a03a0d4f56e6ca414
-=======
->>>>>>> wangyanxia
   methods: {
     handletab() {
       console.log(1),
@@ -80,11 +71,10 @@ export default {
   width: 100%;
   height: 42px;
   line-height: 42px;
-<<<<<<< HEAD
+
   padding-left: 3%;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
 
 .scroll-header {
   display: flex;
@@ -143,13 +133,7 @@ export default {
   /* display: flex; */
   padding-left: 3%;
   box-sizing: border-box;
-=======
-  padding-left: 3%;
-  box-sizing: border-box;
->>>>>>> wangyanxia
 }
-
-=======
 
 .scroll-header {
   display: flex;
@@ -244,7 +228,6 @@ export default {
   word-break: normal;
   /* flex-wrap: wrap; */
 }
->>>>>>> liangpengfei
 .main-sift-dl-text ul {
   display: flex;
   margin: 6% 0;
@@ -267,8 +250,6 @@ export default {
   text-align: center;
   margin-left: 5%;
 }
-<<<<<<< HEAD
-=======
 .main-sift-money {
   width: 100%;
   display: flex;
@@ -307,5 +288,4 @@ export default {
   margin-top: 4%;
   margin-left: 4%;
 }
->>>>>>> liangpengfei
 </style>
