@@ -1,19 +1,270 @@
 <template>
   <div>
-    <p class="card">
-      {{text}}
-    </p>
+    <div>
+      <div class="swiper">
+        <swiper
+          class="cont"
+          @change="switchItem('switchItem',$event)"
+          :current="currentTab"
+          circular="true"
+          skip-hidden-item-layout="true"
+          :indicator-dots="indicatorDots"
+          :autoplay="autoplay"
+          :interval="interval"
+        >
+          <swiper-item v-for="(item,index) in list[0].items" :key="index">
+            <img :src="item.imgUrl" class="swiper" />
+          </swiper-item>
+        </swiper>
+      </div>
+
+      <div class="top-img">
+        <div class="top-top">
+          <div class="top-left">
+            <!-- <img :src="item.imgUrl" class="swiper" /> -->
+            11
+          </div>
+          <div class="top-right">
+            <div class="top-right-img">22</div>
+            <div>33</div>
+          </div>
+        </div>
+        <div class="top-bottom"></div>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <div class="main-sift-goods">
+          <div class="main-sift-every" v-for="(item,index) in list[4].items" :key="index">
+            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <div class="main-sift-every-div">{{item.title}}</div>
+            <h2>${{item.salesPrice}}</h2>
+          </div>
+          <div class="top-bottom"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
-  props: ['text']
-}
+  data() {
+    return {
+      currentTab: "0",
+      indicatorDots: true,
+      autoplay: true,
+      interval: 3000
+    };
+  },
+  props: [],
+  computed: {
+    ...mapState({
+      list: state => state.index.list
+    })
+  },
+  methods: {
+    ...mapActions({
+      Goothing: "index/Index"
+    }),
+    switchTab: function(prompt, res) {
+      // console.log(prompt,res);
+      let oIndex = res.mp.currentTarget.dataset.current;
+      this.currentTab = oIndex;
+    },
+    switchItem: function(prompt, res) {
+      // console.log(prompt,res.mp.detail.current);
+      let oIndex = res.mp.detail.current;
+      this.currentTab = oIndex;
+    }
+  },
+  mounted() {
+    this.Goothing();
+  }
+};
 </script>
 
-<style>
-.card {
-  padding: 10px;
+<style scoped>
+.main-sift {
+  margin-top: 4%;
+}
+.main-sift-box {
+  width: 100%;
+  display: flex;
+  padding-left: 3%;
+  height: 40px;
+  line-height: 40px;
+}
+.main-sift-left {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  width: 84%;
+}
+.main-sift-left h1 {
+  font-size: 22px;
+}
+.main-sift-span {
+  display: inline-block;
+  width: 3px;
+  height: 26px;
+  background: #cdcdcf;
+  margin-top: 3%;
+  margin: 3%;
+}
+.main-sift-right span {
+  color: #eb97a7;
+}
+.main-sift-goods {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* padding-left: 3%; */
+}
+.main-sift-every {
+  width: 31%;
+  height: 218px;
+  background: darksalmon;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+.main-sift-every-img {
+  width: 100%;
+  height: 128px;
+  background: saddlebrown;
+}
+.main-sift-every-div {
+  /* width: 100%; */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 16px;
+  line-height: 24px;
+  padding-left: 2%;
+  overflow: hidden;
+  margin-top: 2%;
+  height: 48px;
+}
+.main-sift-every h2 {
+  color: #e16982;
+}
+.top-bottom {
+  width: 94%;
+  height: 110px;
+  background: antiquewhite;
+  /* padding-left: 3%; */
+  border-radius: 20px;
+  margin-top: 1%;
+}
+.top-nav {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 3%;
+}
+
+.scroll-header {
+  display: flex;
+  white-space: nowrap;
+}
+.scroll-header span {
+  height: 50px;
+  width: 74px;
+  display: inline-block;
+}
+
+.container {
+  flex: 1;
+}
+/*第二功能模块*/
+.section-two {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #fff;
+}
+/*轮播图导航 */
+.tab {
+  width: 100%;
+  height: 45px;
+  box-sizing: border-box;
+  padding: 10px 0 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+}
+.nav {
+  text-align: center;
+  flex: 1;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+.nav:nth-of-type(odd) {
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+}
+.nav.active {
+  color: #16cc80;
+}
+/*轮播图内容*/
+.cont {
+  width: 96%;
+  height: 153px;
+  padding-top: 12px;
+  font-size: 14px;
+}
+.cont swiper-item {
+  width: auto;
+  height: 100%;
+  background-color: #5fd9a6;
+  border: 1px solid #ebebeb;
+  text-align: center;
+  font-size: 25px;
+  box-sizing: border-box;
+}
+.swiper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.top-img {
+  width: 100%;
+  margin-top: 4%;
+  padding-left: 3%;
+}
+.top-top {
+  display: flex;
+}
+.top-left {
+  width: 40%;
+  height: 196px;
+  background: lawngreen;
+}
+.top-right {
+  width: 52%;
+  height: 196px;
+  margin-left: 1%;
+}
+.top-right div {
+  width: 100%;
+  height: 48%;
+  background: red;
+}
+.top-right div:nth-child(2) {
+  width: 100%;
+  height: 48%;
+  background: red;
+  margin-top: 3%;
 }
 </style>
