@@ -1,10 +1,7 @@
-import { Goothing, products, Tab } from "../../services/index";
+import { Goothing, products } from "../../services/index";
 const state = {
     list: [],
-    productlist: [],
-    tablist: []
-
-
+    productlist: []
 }
 //派生数据
 const getters = {
