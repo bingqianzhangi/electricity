@@ -133,7 +133,6 @@ export default {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 .scroll-header {
   display: flex;
   white-space: nowrap;
@@ -226,8 +225,6 @@ export default {
   word-break: normal;
   /* flex-wrap: wrap; */
 }
-=======
->>>>>>> liangpengfei
 .main-sift-dl-text ul {
   display: flex;
   margin: 6% 0;
@@ -250,7 +247,6 @@ export default {
   text-align: center;
   margin-left: 5%;
 }
-<<<<<<< HEAD
 .main-sift-money {
   width: 100%;
   display: flex;
@@ -289,6 +285,4 @@ export default {
   margin-top: 4%;
   margin-left: 4%;
 }
-=======
->>>>>>> liangpengfei
 </style>
