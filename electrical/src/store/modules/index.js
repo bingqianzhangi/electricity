@@ -21,10 +21,10 @@ const actions = {
         commit('productData', data)
     },
     //tab切换
-    async Tabchange({ commit }, payload) {
-        let data = await Tab(payload);
-        commit('TabData', data)
-    }
+    // async Tabchange({ commit }, payload) {
+    //     let data = await Tab(payload);
+    //     commit('TabData', data)
+    // }
 }
 //同步改变,改变数据的唯一途径
 const mutations = {
