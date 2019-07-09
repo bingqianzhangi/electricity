@@ -38,8 +38,6 @@ const mutations = {
     Goothings(state, payload) {
         state.list = payload.result;
 
-        console.log("state.list...", state.list)
-
     },
     //为你精选
     productData(state, payload) {

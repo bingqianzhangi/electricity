@@ -36,7 +36,6 @@
           <img :src="list[3].pictUrl" alt />
         </div>
       </div>
-
       <div class="main-sift">
         <div class="main-sift-box">
           <div class="main-sift-left">
