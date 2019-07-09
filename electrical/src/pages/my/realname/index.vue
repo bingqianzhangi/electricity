@@ -1,6 +1,6 @@
 <template>
     <div class='real-name'>
-        请输入身份证
+        请输入身份证:
     </div>
 </template>
 <script>
