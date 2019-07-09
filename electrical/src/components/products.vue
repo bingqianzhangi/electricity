@@ -20,7 +20,7 @@
               <li>包税</li>
             </ul>
             <div class="main-sift-money">
-              <span class="main-sift-money1">$</span>
+              <span class="main-sift-money1">￥</span>
               <h1>{{item.productVo.salesPrice}}</h1>
               <span class="main-sift-money2">${{item.productVo.vipPrice}}</span>
               <img src="../../static/images/黑卡@2x.png" alt />
@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style scoped>
+.main-sift-dl-box {
+  padding-left: 3%;
+  box-sizing: border-box;
+}
 .main-sift-dl-text ul {
   display: flex;
   margin: 8% 0;
@@ -83,14 +87,15 @@ export default {
   line-height: 30px;
   margin-top: 6%;
   padding-left: 2%;
+  box-sizing: border-box;
 }
 .main-sift-money1 {
   color: #e16982;
   font-size: 18px;
 }
 .main-sift-money h1 {
-  font-size: 24px;
-  color: #e16982;
+  font-size: 22px;
+  color: #df5577;
 }
 .main-sift-money2 {
   color: #938c62;
@@ -106,7 +111,7 @@ export default {
 }
 .main-sift-money div {
   background: #ffe3ee;
-  color: #d87991;
+  color: #df5577;
   /* width: 70px; */
   height: 16px;
   font-size: 12px;
@@ -127,6 +132,7 @@ export default {
   padding-left: 3%;
   height: 40px;
   line-height: 40px;
+  box-sizing: border-box;
 }
 .main-sift-left {
   display: flex;
@@ -146,8 +152,8 @@ export default {
   margin: 3%;
 }
 .main-sift-dl-img img {
-  width: 98%;
-  height: 98%;
+  width: 90%;
+  height: 86%;
 }
 .main-sift-dl-img {
   width: 125px;

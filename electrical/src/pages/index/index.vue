@@ -10,6 +10,9 @@
         <span>今日推荐</span>
         <span>今日推荐</span>
         <span>今日推荐</span>
+        <span>今日推荐</span>
+        <span>今日推荐</span>
+        <span>今日推荐</span>
       </scroll-view>
     </div>
     <card></card>
@@ -25,19 +28,26 @@ export default {
     return {};
   },
 
-  components: { card },
-
-
-
-  methods: {
-    handletab(){
-      console.log(1),
-      wx.navigateTo({
-        url:'pages/classify/main'
-      })
-    }
+  components: { card, products },
+  computed: {
+    ...mapState({
+      list: state => state.index.tablist
+    })
   },
-
+  methods: {
+    handletab() {
+      console.log(1),
+        wx.navigateTo({
+          url: "pages/classify/main"
+        });
+    }
+    // ...mapActions({
+    //  Tabchange: "index/Tabchange"
+    // }),
+  },
+  onShow() {
+    // this.Tabchange()
+  },
   created() {}
 };
 </script>
@@ -58,9 +68,10 @@ export default {
 }
 .top-nav {
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 42px;
+  line-height: 42px;
   padding-left: 3%;
+  box-sizing: border-box;
 }
 
 .scroll-header {
@@ -77,6 +88,7 @@ export default {
   width: 100%;
   margin-top: 4%;
   padding-left: 3%;
+  box-sizing: border-box;
 }
 .top-top {
   display: flex;
@@ -97,7 +109,6 @@ export default {
 .top-right div:nth-child(2) {
   width: 100%;
   height: 48%;
-  background: red;
   margin-top: 3%;
 }
 .top-bottom {
@@ -119,6 +130,7 @@ export default {
   width: 100%;
   /* display: flex; */
   padding-left: 3%;
+  box-sizing: border-box;
 }
 
 .main-sift-dl-text ul {
