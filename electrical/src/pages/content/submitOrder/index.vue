@@ -14,7 +14,7 @@
                    <div class="arrow"><img src="/static/images/jt.png" alt=""></div>
                 </div>
                 <ul>
-                    <li></li>
+                    <li v-for="(item,index) in list" :key="index" :style="item.bg"></li>
                 </ul>
             </div>
             <div class="save_per">
@@ -24,6 +24,54 @@
         </header>       
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            list:[{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            }]
+        }
+    }
+}
+</script>
 
 <style lang="scss">
 .wrap_order{
@@ -51,11 +99,31 @@ header{
         border-radius: 5px;
         .add_info{
             height: 80px;
-            background: red;
             display: flex;
             justify-content: space-between;
-            padding: 5px 10px;
+            padding: 10px;
             box-sizing: border-box;
+            .info{
+                width: 307px; 
+                h3{
+                    display: flex;
+                    margin-bottom: 10px;
+                    >b:nth-child(1){
+                        margin-right: 10px;
+                    }
+                }
+                >div{
+                    display: flex;
+                    img{
+                        width: 14px;
+                        height: 14px;
+                        margin-right: 5px;
+                    }
+                    span{
+                        flex: 1;
+                    }
+                }
+            }
             .arrow{
                 height: 100%;
                 display: flex;
@@ -64,6 +132,19 @@ header{
                    width: 14px;
                    height: 14px;
                 }
+            }
+        }
+        ul{
+            width: 100%;
+            height: 4px;
+            display: flex;
+            li{
+                display:inline-block;
+                padding:0 10rpx;
+                background:#fc5d7b;
+                border:4rpx solid #fc5d7b;
+                color:#333;
+                transform:skew(-50deg);
             }
         }
     }
