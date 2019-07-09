@@ -1,10 +1,7 @@
-import { Goothing, products, Tab } from "../../services/index";
+import { Goothing, products } from "../../services/index";
 const state = {
     list: [],
-    productlist: [],
-    tablist: []
-
-
+    productlist: []
 }
 //派生数据
 const getters = {
@@ -22,14 +19,6 @@ const actions = {
         let data = await products(payload);
         commit('productData', data)
     },
-
-
-    //tab切换
-    async Tabchange({ commit }, payload) {
-        let data = await Tab(payload);
-        commit('TabData', data)
-    }
-
 }
 //同步改变,改变数据的唯一途径
 const mutations = {
@@ -38,16 +27,12 @@ const mutations = {
         state.list = payload.result;
 
         console.log("state.list...", state.list)
-
     },
     //为你精选
     productData(state, payload) {
         state.productlist = payload.result;
-    },
-    TabData(state, payload) {
-        state.tablist = payload.result;
-        // console.log("state.list...", state.productlist)
-    },
+        console.log("state.list...", state.productlist)
+    }
 }
 export default {
     namespaced: true,
