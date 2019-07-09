@@ -125,8 +125,8 @@
             <div class="menu-right">
               <p class="left-font">雅诗兰黛 鲜活亮采果萃水30ml(清爽型)</p>
               <div class="right-box">
-                <span class="price">¥ 49.9</span>
-                <span class="profit">赚 ¥3.92</span>
+                    <span class="price">¥ 49.9</span>
+                    <span class="profit">赚 ¥3.92</span>
               </div>
             </div>
           </li>
