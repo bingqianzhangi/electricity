@@ -144,10 +144,10 @@ export default {
     };
   },
   methods:{
-      viewScroll (e) {
-            console.log(e)      
-            this.top = e.mp.detail.scrollTop;            
-        }
+      // viewScroll (e) {
+      //       console.log(e)      
+      //       this.top = e.mp.detail.scrollTop;            
+      //   }
   }
 }
 </script>

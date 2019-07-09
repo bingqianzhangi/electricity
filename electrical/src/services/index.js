@@ -8,6 +8,10 @@ export let products = params => {
     return request.post('/api/open/page/home/products/1.0.0', params);
 }
 //tab切换
-export let Tab = params => {
-    return request.post('/api/open/product/category/sub/1', params);
+
+//tab列表
+// https://upapi.jinaup.com/api/open/product/category/sub/1
+//https://upapi.jinaup.com/
+export let TabList = params => {
+    return request.post('/api/open/product/category/query/1.0.0');
 }

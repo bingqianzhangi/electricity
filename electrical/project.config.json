@@ -1,20 +1,31 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
+<<<<<<< HEAD
 		"es6": true,
+=======
+		"es6": false,
+>>>>>>> yanglibo
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
 		"checkInvalidKey": true
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wx6b8bd15e447fbe7a",
+	"libVersion": "2.7.3",
+	"appid": "wxefa9dccc978fbf0f",
 	"projectname": "electrical",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -29,16 +40,28 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "tab切换",
 					"pathName": "pages/content/classify/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情1",
+					"pathName": "pages/content/shopDetail/main",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情2",
+					"pathName": "pages/content/labelDetail/main",
 					"scene": null
 				}
 			]
