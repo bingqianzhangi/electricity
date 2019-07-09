@@ -13,11 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
-<<<<<<< HEAD
 	"appid": "wx6b8bd15e447fbe7a",
-=======
-	"appid": "wxefa9dccc978fbf0f",
->>>>>>> wangyanxia
 	"projectname": "electrical",
 	"debugOptions": {
 		"hidedInDevtools": []
