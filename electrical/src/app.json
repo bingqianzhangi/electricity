@@ -1,5 +1,7 @@
 {
   "pages": [
+   
+    "pages/index/search/main",
     "pages/index/main",
     "pages/my/obligation/main",
     "pages/my/coupon/main",
