@@ -34,10 +34,9 @@
 			"current": 0,
 			"list": [
 				{
-					"id": 0,
+					"id": -1,
 					"name": "tab切换",
-					"pathName": "pages/classify/main",
-					"query": "",
+					"pathName": "pages/content/classify/main",
 					"scene": null
 				}
 			]
