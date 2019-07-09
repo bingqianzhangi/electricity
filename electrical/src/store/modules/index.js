@@ -15,7 +15,6 @@ const actions = {
     //精选好物
     async Index({ commit }, payload) {
         let data = await Goothing(payload);
-
         commit('Goothings', data)
     },
     //为你精选
@@ -42,7 +41,6 @@ const mutations = {
     //为你精选
     productData(state, payload) {
         state.productlist = payload.result;
-
     },
     TabData(state, payload) {
         state.tablist = payload.result;
