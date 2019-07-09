@@ -27,7 +27,6 @@ export default {
   data() {
     return {};
   },
-
   components: { card, products },
   computed: {
     ...mapState({

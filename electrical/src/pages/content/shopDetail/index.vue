@@ -53,8 +53,8 @@
             <button class="share_btn">分享赚<span>11.1</span></button>
             <button class="buy_btn" @click="buy">立即购买</button>
         </div>
-        <div class="type_mack">
-            <Type />
+        <div class="type_mack" v-if="show">
+            <Type :hasShow="show" @closeShow="close" />
         </div>
     </div>
 </template>
@@ -74,7 +74,10 @@ export default {
     methods: {
         buy(){
             this.show = true;
-        }
+        },
+        close(){
+            this.show=false;
+        }     
     },
 }
 </script>
@@ -116,6 +119,7 @@ export default {
             }
         }
         >div{
+            margin-top: 4px;
             span{
                 color: rgb(199,143,51);
                 font-size: 16px;
@@ -144,14 +148,14 @@ export default {
     height: 86px;
     padding: 10px;
     box-sizing: border-box;
-    p{
+    >p{
         color: #323a45;
         font-size: 18px;
+        margin-bottom: 6px;
     }
-    span{
+    >span{
         color: #999da2;
         font-size: 14px;
-        margin: 10px 0;
     }
 }
 .choose_type{
@@ -160,9 +164,10 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     font-size: 14px;
+    margin-bottom: 10px;
     .type{
         width: 100%;
-        height: 43px;
+        height: 40px;
         display: flex;
         align-items: center;
         color: #676767;
@@ -204,7 +209,11 @@ export default {
     }
 }
 .pic_detail{
+    width: 100%;
     margin-bottom: 50px;
+    img{
+        width: 100%;
+    }
 }
 .footer_btns{
     width: 100%;

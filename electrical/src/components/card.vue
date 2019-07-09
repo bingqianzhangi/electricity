@@ -17,7 +17,6 @@
           </swiper-item>
         </swiper>
       </div>
-
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">

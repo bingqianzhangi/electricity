@@ -1,12 +1,13 @@
-<template>
+<template> 
     <div class="wrap_type">
         <div class="content">
             <div class="choose_type">
-                <block>
+                <div>
                     <span>默认</span>
                     <span>尺码</span>
                     <span>颜色</span>
-                </block>
+                </div>
+                <span class="close" @click="close">X</span>
             </div>
             <dl>
                 <dt><img src="https://h5.jinaup.com/product_img/1.jpg" alt=""></dt>
@@ -23,34 +24,6 @@
                             <span>jjjjjj</span>
                             <span>jjjjjj</span>
                             <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                        </block>
-                    </div>
-                </div>
-                <div class="data">
-                    <span>默认</span>
-                    <div>
-                        <block>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
                         </block>
                     </div>
                 </div>
@@ -58,17 +31,43 @@
             <div class="sum">
                 <span>数量</span>
                 <div>
-                    <span>-</span>
-                    <b>0</b>
-                    <span>+</span>
+                    <span @click="del">-</span>
+                    <b>{{num}}</b>
+                    <span @click="add">+</span>
                 </div>
             </div>
         </div>
-        <button>确定</button>
+        <button @click="sure">确定</button>
     </div>
 </template>
 
-<style lang="scss">
+<script>
+export default {
+    props:['hasShow'],
+    data() {
+        return {
+            num:0,
+            flag: true
+        }
+    },
+    methods: {
+        close(){
+            this.$emit('closeShow');
+        },
+        add(){
+            this.num++;
+        },
+        del(){
+            this.num <= 0 ? 0 : this.num--;
+        },
+        sure(){
+            this.$emit('closeShow');
+        }
+    },
+}
+</script>
+
+<style lang="scss" scoped>
 .wrap_type{
     width: 100%;
     background: #fff;
@@ -84,8 +83,12 @@
 }
 .choose_type{
     width: 100%;
-    span{
-        margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    >div{
+        span{
+            margin-right: 10px;
+        }
     }
 }
 dl{
