@@ -43,7 +43,7 @@ export default {
   methods: {
     ...mapActions({
       productData: "index/Foryou"
-    })
+    }),
   },
   mounted() {
     this.productData();

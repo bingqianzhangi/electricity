@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-sift-goods">
-      <div class="main-sift-every" v-for="(item,i) in message" :key="i">
+      <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl)">
         <img :src="item.imgUrl" class="main-sift-every-img" />
         <div class="main-sift-every-div">{{item.title}}</div>
         <h2>￥{{item.salesPrice}}</h2>
@@ -10,9 +10,25 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex';
+import { getParams } from '@/utils/getParams';
+
 export default {
   props: ["message"],
-  components: {}
+  components: {},
+  methods: {
+    ...mapActions({
+      getDetail:'shopDetail/getDetail'
+    }),
+    shopDetail(id){
+      // console.log(getParams(id).businessId)
+      let pId=getParams(id).businessId;
+      this.getDetail({
+        pid:pId
+      })
+      wx.navigateTo({ url: '/pages/content/shopDetail/main' });
+    }
+  },
 };
 </script>
 
