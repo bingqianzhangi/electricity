@@ -46,16 +46,51 @@
             <span>更多></span>
           </div>
         </div>
-        <div class="main-sift-goods">
-          <div class="main-sift-every" v-for="(item,index) in list[4].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
-            <div class="main-sift-every-div">{{item.title}}</div>
-            <h2>${{item.salesPrice}}</h2>
+        <good :message="list[4].items"></good>
+        <goodpic :message="list[5]"></goodpic>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
           </div>
-          <div class="top-bottom">
-            <img :src="list[5].pictUrl" alt />
+          <div class="main-sift-right">
+            <span>更多></span>
           </div>
         </div>
+        <good :message="list[6].items"></good>
+        <goodpic :message="list[7]"></goodpic>
+      </div>
+
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <good :message="list[8].items"></good>
+        <goodpic :message="list[9]"></goodpic>
+      </div>
+      <div class="main-sift">
+        <div class="main-sift-box">
+          <div class="main-sift-left">
+            <h1>精选好物</h1>
+            <span class="main-sift-span"></span>
+            <span>等你来抢</span>
+          </div>
+          <div class="main-sift-right">
+            <span>更多></span>
+          </div>
+        </div>
+        <good :message="list[10].items"></good>
+        <goodpic :message="list[11]"></goodpic>
       </div>
       <div class="main-sift">
         <div class="main-sift-box">
@@ -69,77 +104,7 @@
           </div>
         </div>
         <div class="main-sift-goods">
-          <div class="main-sift-every" v-for="(item,index) in list[6].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
-            <div class="main-sift-every-div">{{item.title}}</div>
-            <h2>${{item.salesPrice}}</h2>
-          </div>
-          <div class="top-bottom">
-            <img :src="list[7].pictUrl" alt />
-          </div>
-        </div>
-      </div>
-      <div class="main-sift">
-        <div class="main-sift-box">
-          <div class="main-sift-left">
-            <h1>精选好物</h1>
-            <span class="main-sift-span"></span>
-            <span>等你来抢</span>
-          </div>
-          <div class="main-sift-right">
-            <span>更多></span>
-          </div>
-        </div>
-        <div class="main-sift-goods">
-          <div class="main-sift-every" v-for="(item,index) in list[8].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
-            <div class="main-sift-every-div">{{item.title}}</div>
-            <h2>${{item.salesPrice}}</h2>
-          </div>
-          <div class="top-bottom">
-            <img :src="list[9].pictUrl" alt />
-          </div>
-        </div>
-      </div>
-      <div class="main-sift">
-        <div class="main-sift-box">
-          <div class="main-sift-left">
-            <h1>精选好物</h1>
-            <span class="main-sift-span"></span>
-            <span>等你来抢</span>
-          </div>
-          <div class="main-sift-right">
-            <span>更多></span>
-          </div>
-        </div>
-        <div class="main-sift-goods">
-          <div class="main-sift-every" v-for="(item,index) in list[10].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
-            <div class="main-sift-every-div">{{item.title}}</div>
-            <h2>${{item.salesPrice}}</h2>
-          </div>
-          <div class="top-bottom">
-            <img :src="list[11].pictUrl" alt />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="main-sift">
-      <div class="main-sift-box">
-        <div class="main-sift-left">
-          <h1>精选好物</h1>
-          <span class="main-sift-span"></span>
-          <span>等你来抢</span>
-        </div>
-        <div class="main-sift-right">
-          <span>更多></span>
-        </div>
-      </div>
-      <div class="main-sift-goods">
-        <div class="main-sift-every" v-for="(item,index) in list[12].items" :key="index">
-          <img :src="item.imgUrl" class="main-sift-every-img" />
-          <div class="main-sift-every-div">{{item.title}}</div>
-          <h2>${{item.salesPrice}}</h2>
+          <good :message="list[12].items"></good>
         </div>
       </div>
     </div>
@@ -147,6 +112,8 @@
 </template>
 
 <script>
+import good from "@/components/good";
+import goodpic from "@/components/goodpic";
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
@@ -157,7 +124,10 @@ export default {
       interval: 3000
     };
   },
-  props: [],
+  components: {
+    good,
+    goodpic
+  },
   computed: {
     ...mapState({
       list: state => state.index.list
@@ -183,6 +153,16 @@ export default {
 </script>
 
 <style scoped>
+.top-bottom {
+  width: 100%;
+  height: 110px;
+  border-radius: 22px;
+}
+.top-bottom img {
+  height: 100%;
+  width: 96%;
+  border-radius: 22px;
+}
 .top-right-img img {
   width: 100%;
   height: 100%;
@@ -204,6 +184,7 @@ export default {
   padding-left: 3%;
   height: 40px;
   line-height: 40px;
+  box-sizing: border-box;
 }
 .main-sift-left {
   display: flex;
@@ -220,6 +201,7 @@ export default {
   height: 26px;
   margin-top: 3%;
   margin: 3%;
+  background: #ccc;
 }
 .main-sift-right span {
   color: #eb97a7;
@@ -232,44 +214,39 @@ export default {
 }
 .main-sift-every {
   width: 31%;
-  height: 218px;
+  height: 200px;
   margin-left: 2%;
   margin-top: 2%;
 }
 .main-sift-every-img {
   width: 100%;
-  height: 128px;
+  height: 120px;
 }
 .main-sift-every-div {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   padding-left: 2%;
   overflow: hidden;
   margin-top: 2%;
   height: 48px;
+  box-sizing: border-box;
 }
 .main-sift-every h2 {
   color: #e16982;
-}
-.top-bottom {
-  width: 94%;
-  height: 110px;
-  border-radius: 22px;
   margin-top: 1%;
+  text-indent: 2%;
+  font-size: 14px;
 }
-.top-bottom img {
-  height: 100%;
-  width: 100%;
-  border-radius: 22px;
-}
+
 .top-nav {
   width: 100%;
   height: 50px;
   line-height: 50px;
   padding-left: 3%;
+  box-sizing: border-box;
 }
 
 .scroll-header {
@@ -301,6 +278,7 @@ export default {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ebebeb;
+  box-sizing: border-box;
 }
 .nav {
   text-align: center;
@@ -321,6 +299,7 @@ export default {
   height: 153px;
   padding-top: 12px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 .cont swiper-item {
   width: auto;
@@ -341,9 +320,11 @@ export default {
   width: 100%;
   margin-top: 4%;
   padding-left: 3%;
+  box-sizing: border-box;
 }
 .top-top {
   display: flex;
+  text-align: center;
 }
 .top-left {
   width: 40%;
