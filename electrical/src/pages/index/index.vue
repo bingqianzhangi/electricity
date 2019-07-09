@@ -35,12 +35,15 @@ export default {
       list: state => state.index.tablist
     })
   },
+<<<<<<< HEAD
 =======
   components: { card ,products},
 
 
 
 >>>>>>> 83914513cd7a5d99f6a9050a03a0d4f56e6ca414
+=======
+>>>>>>> wangyanxia
   methods: {
     handletab() {
       console.log(1),
@@ -77,6 +80,7 @@ export default {
   width: 100%;
   height: 42px;
   line-height: 42px;
+<<<<<<< HEAD
   padding-left: 3%;
   box-sizing: border-box;
 }
@@ -139,6 +143,10 @@ export default {
   /* display: flex; */
   padding-left: 3%;
   box-sizing: border-box;
+=======
+  padding-left: 3%;
+  box-sizing: border-box;
+>>>>>>> wangyanxia
 }
 
 =======
@@ -168,6 +176,7 @@ export default {
   width: 100%;
   margin-top: 4%;
   padding-left: 3%;
+  box-sizing: border-box;
 }
 .top-top {
   display: flex;
@@ -190,7 +199,6 @@ export default {
 .top-right div:nth-child(2) {
   width: 100%;
   height: 48%;
-  background: red;
   margin-top: 3%;
 }
 .top-bottom {
@@ -212,6 +220,7 @@ export default {
   width: 100%;
   /* display: flex; */
   padding-left: 3%;
+  box-sizing: border-box;
 }
 .main-sift-dl {
   width: 100%;

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/main",
+<<<<<<< HEAD
     "pages/my/mine/main",  
     "pages/content/shopDetail/main",
     "pages/content/classify/main",
@@ -16,6 +17,12 @@
     "pages/my/newaddress/main"
 
 >>>>>>> 83914513cd7a5d99f6a9050a03a0d4f56e6ca414
+=======
+    "pages/my/main",  
+    "pages/content/shopDetail/main",
+    "pages/content/classify/main",
+    "pages/content/labelDetail/main"
+>>>>>>> wangyanxia
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,7 +44,11 @@
       },
       {
         "text": "我的",
+<<<<<<< HEAD
         "pagePath": "pages/my/mine/main",
+=======
+        "pagePath": "pages/my/main",
+>>>>>>> wangyanxia
         "iconPath": "static/images/my.png",
         "selectedIconPath": "static/images/my_active.png"
       }
