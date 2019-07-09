@@ -140,7 +140,7 @@
 export default {
   data() {
     return {
-        top: 0
+        top: 1
     };
   },
   methods:{
