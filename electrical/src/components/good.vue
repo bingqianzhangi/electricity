@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="main-sift-goods">
-      <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl,item)">
+      <div
+        class="main-sift-every"
+        v-for="(item,i) in message"
+        :key="i"
+        @click="shopDetail(item.jumpUrl,item)"
+      >
         <img :src="item.imgUrl" class="main-sift-every-img" />
         <div class="main-sift-every-div">{{item.title}}</div>
         <h2>￥{{item.salesPrice}}</h2>
@@ -10,38 +15,38 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex';
-import { getParams } from '@/utils/getParams';
+import { mapState, mapActions } from "vuex";
+import { getParams } from "@/utils/getParams";
 
 export default {
   props: ["message"],
-  data(){
-    return {}
+  data() {
+    return {};
   },
   computed: {
     ...mapState({
-          detailList:state=>state.shopDetail.detailList
+      detailList: state => state.shopDetail.detailList
     })
   },
   methods: {
     ...mapActions({
-      getDetail:'shopDetail/getDetail',
-      getChoose:'shopDetail/getChoose',
-      getPic:'shopDetail/getPic',
+      getDetail: "shopDetail/getDetail",
+      getChoose: "shopDetail/getChoose",
+      getPic: "shopDetail/getPic"
       // getRemind:'shopDetail/getRemind',
     }),
-    shopDetail(id,item){
+    shopDetail(id, item) {
       // console.log(getParams(id).businessId)
-      console.log('dddd',this.detailList)
-      console.log('111222',item)
-      let pId=getParams(id).businessId;
-      this.getDetail({pid:pId});
-      this.getChoose({pid:pId});
-      this.getPic({pid:pId, basePid:'36482',userIdentity:'2'});
+      console.log("dddd", this.detailList);
+      console.log("111222", item);
+      let pId = getParams(id).businessId;
+      this.getDetail({ pid: pId });
+      this.getChoose({ pid: pId });
+      this.getPic({ pid: pId, basePid: "36482", userIdentity: "2" });
       // this.getRemind({sstid:this.detailList.sstid})
-      wx.navigateTo({ url: '/pages/content/shopDetail/main'});
+      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
     }
-  },
+  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="top-ipt">
-      <img src="../../../static/images/search.png" alt />
+      <img src="../../../static/images/search.png" alt @click="search" />
     </div>
     <div class="top-nav">
       <scroll-view scroll-x class="scroll-header">
@@ -40,6 +40,12 @@ export default {
           url: "pages/classify/main"
         });
     },
+    search()
+    {
+      wx.navigateTo({
+        url:"/pages/index/search/main"
+      })
+    }
     // ...mapActions({
     //  Tabchange: "index/Tabchange"
     // }),
