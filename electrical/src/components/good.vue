@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-sift-goods">
-      <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl)">
+      <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl,item)">
         <img :src="item.imgUrl" class="main-sift-every-img" />
         <div class="main-sift-every-div">{{item.title}}</div>
         <h2>￥{{item.salesPrice}}</h2>
@@ -15,17 +15,19 @@ import { getParams } from '@/utils/getParams';
 
 export default {
   props: ["message"],
-  components: {},
   methods: {
     ...mapActions({
-      getDetail:'shopDetail/getDetail'
+      getDetail:'shopDetail/getDetail',
+      getRemind:'shopDetail/getRemind',
+      getPic:'shopDetail/getPic',
     }),
-    shopDetail(id){
+    shopDetail(id,item){
       // console.log(getParams(id).businessId)
+      console.log('111222',item)
       let pId=getParams(id).businessId;
-      this.getDetail({
-        pid:pId
-      })
+      this.getDetail({pid:pId});
+      this.getRemind({pid:pId});
+      this.getPic({pid:pId, basePid:'36482',userIdentity:'2'});
       wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
   },

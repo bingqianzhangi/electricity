@@ -1,7 +1,9 @@
 import { shopDel, shopRemind, shopChoose, shopPic, shopBounce } from "@/services/shopDetail";
 
 const state = {
-    detailList:[]
+    detailList:[],
+    chooseList:[],
+    picList:[]
 }
 
 //派生数据
@@ -11,11 +13,21 @@ const getters = {
 
 //异步改变
 const actions = {
+    //商品详情信息
     async getDetail({ commit }, payload) {
-        // payload.pid=JSON.stringify(payload.pid)
         let data = await shopDel(payload);
-        // console.log('111',payload.pid)
-        commit('upDetail', data)
+        commit('upDetail', data.result)
+    },
+    //商品详情选择
+    async getRemind({ commit }, payload) {
+        let data = await shopChoose(payload);
+        commit('upChoose',data.result)
+    },
+    //商品详情图
+    async getPic({ commit }, payload) {
+        let data = await shopPic(payload);
+        console.log('pic',data)
+        commit('upPic',data.result)
     }
 }
 
@@ -23,8 +35,13 @@ const actions = {
 const mutations = {
     upDetail(state,payload){
         state.detailList=payload;
-        console.log(payload)
     },
+    upChoose(state,payload){
+        state.chooseList=payload;
+    },
+    upPic(state,payload){
+        state.picList=payload;
+    }
 }
 
 export default {

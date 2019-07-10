@@ -14,7 +14,7 @@
                    <div class="arrow"><img src="/static/images/jt.png" alt=""></div>
                 </div>
                 <ul>
-                    <li v-for="(item,index) in list" :key="index" :style="item.bg"></li>
+                    <li v-for="(item,index) in list" :key="index" ></li>
                 </ul>
             </div>
             <div class="save_per">
@@ -97,6 +97,7 @@ header{
         margin: 10px;
         background: #fff;
         border-radius: 5px;
+        position:relative;
         .add_info{
             height: 80px;
             display: flex;
@@ -136,8 +137,12 @@ header{
         }
         ul{
             width: 100%;
-            height: 4px;
             display: flex;
+            position:absolute;
+            overflow:hidden;
+            left:-21rpx;
+            bottom:2rpx;
+            margin-left:22rpx;
             li{
                 display:inline-block;
                 padding:0 10rpx;
@@ -145,6 +150,7 @@ header{
                 border:4rpx solid #fc5d7b;
                 color:#333;
                 transform:skew(-50deg);
+                margin-right: 6px;
             }
         }
     }

@@ -39,7 +39,7 @@ export default {
         wx.navigateTo({
           url: "pages/classify/main"
         });
-    }
+    },
     // ...mapActions({
     //  Tabchange: "index/Tabchange"
     // }),
