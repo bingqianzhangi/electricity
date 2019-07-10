@@ -3,16 +3,16 @@
         <div class="content">
             <div class="choose_type">
                 <div>
-                    <span>默认</span>
-                    <span>尺码</span>
-                    <span>颜色</span>
+                    <block v-for="(item,index) in chooseList" :key="item.aid">
+                        <span>{{item.aname}}</span>
+                    </block>
                 </div>
                 <span class="close" @click="close">X</span>
             </div>
             <dl>
-                <dt><img src="https://h5.jinaup.com/product_img/1.jpg" alt=""></dt>
+                <dt><img :src="mainImgUrl" alt=""></dt>
                 <dd>
-                    <h4><span>￥</span><b>344</b></h4>
+                    <h4><span>￥</span><b>{{salesPrice}}</b></h4>
                     <p><span>库存：</span><b></b></p>
                 </dd>
             </dl>
@@ -20,10 +20,8 @@
                 <div class="data">
                     <span>默认</span>
                     <div>
-                        <block>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
-                            <span>jjjjjj</span>
+                        <block v-for="(item,index) in chooseList[0].attributeValueRelationVoList" :key="item.vid">
+                            <span :class="index==ind?'active':''" @click="style(index)">{{item.vname}}</span>
                         </block>
                     </div>
                 </div>
@@ -42,13 +40,21 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
-    props:['hasShow'],
+    props:['hasShow',"chooseList","salesPrice","mainImgUrl","pid"],
     data() {
         return {
             num:0,
-            flag: true
+            flag: true,
+            ind:0
         }
+    },
+    mounted() {
+        // ...mapActions({
+        //     getBounce:shopDetail.getBounce
+        // })
     },
     methods: {
         close(){
@@ -56,12 +62,16 @@ export default {
         },
         add(){
             this.num++;
+            console.log(this.chooseList[0].attributeValueRelationVoList)
         },
         del(){
             this.num <= 0 ? 0 : this.num--;
         },
         sure(){
             this.$emit('closeShow');
+        },
+        style(i){
+            this.ind=i;
         }
     },
 }
@@ -127,11 +137,16 @@ dl{
             display: flex;
             flex-wrap: wrap;
             >span{
-                padding: 2px 10px;
+                padding: 2px 8px;
                 border: 1px solid rgb(153,157,162);
                 border-radius: 5px;
                 margin: 10px 10px 0;
-                font-size: 14px;
+                font-size: 12px;
+            }
+            .active{
+                background: rgb(51,214,197);
+                color: #fff;
+                border: none;
             }
         }
     }

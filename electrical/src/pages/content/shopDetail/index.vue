@@ -63,7 +63,13 @@
             <button class="buy_btn" @click="buy">立即购买</button>
         </div>
         <div class="type_mack" v-if="show">
-            <Type :hasShow="show" @closeShow="close" />
+            <Type 
+            :hasShow="show" 
+            :chooseList="chooseList"
+            :salesPrice="detailList.salesPrice"
+            :mainImgUrl="detailList.mainImgUrl"
+            :pid="detailList.pid"
+            @closeShow="close" />
         </div>
     </div>
 </template>

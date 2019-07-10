@@ -17,7 +17,6 @@ const actions = {
     //商品详情信息
     async getDetail({ commit }, payload) {
         let data = await shopDel(payload);
-        console.log('list',data);
         commit('upDetail', data.result)
     },
     //商品详情选择
@@ -30,11 +29,17 @@ const actions = {
         let data = await shopPic(payload);
         commit('upPic',data.result)
     },
+    //商品详情提示
     async getRemind({ commit }, payload) {
         let data = await shopRemind(payload);
-        console.log('remind',data);
         commit('upRemind',data.result)
-    }
+    },
+    //商品详情底部弹框
+    async getBounce({ commit }, payload) {
+        let data = await shopBounce(payload);
+        console.log('getBounce',data);
+        // commit('upRemind',data.result)
+    },
 }
 
 //同步改变,改变数据的唯一途径
