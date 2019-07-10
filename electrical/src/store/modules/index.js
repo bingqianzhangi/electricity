@@ -1,7 +1,9 @@
-import { Goothing, products } from "../../services/index";
+import { Goothing, products ,labelquery } from "../../services/index";
 const state = {
     list: [],
-    productlist: []
+    productlist: [],
+    //点击轮播图数据
+    bannerList:[]
 }
 //派生数据
 const getters = {
@@ -19,6 +21,12 @@ const actions = {
         let data = await products(payload);
         commit('productData', data)
     },
+    async Query({ commit }, payload) {
+        console.log('payload....',payload)
+        let data = await labelquery(payload);
+        console.log("data..", data)
+        commit('labelData', data.result)
+    }
 }
 //同步改变,改变数据的唯一途径
 const mutations = {
@@ -31,6 +39,11 @@ const mutations = {
     productData(state, payload) {
         state.productlist = payload.result;
         console.log("state.list...", state.productlist)
+    },
+    //标签列表
+    labelData(state, payload){
+        // state.bannerList = payload;
+        // console.log("state.list...", state.bannerList)
     }
 }
 export default {
