@@ -11,3 +11,7 @@ export let products = params => {
 export let Tab = params => {
     return request.post('/api/open/product/category/sub/1', params);
 }
+//搜索
+export let search = params => {
+    return request.post(`/api/open/search/query/1.0.0?queryWord=${params.queryWord}&queryType=${params.queryType}&querySort=asc&pageIndex=1`);
+}

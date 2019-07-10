@@ -247,7 +247,6 @@ export default {
   text-align: center;
   margin-left: 5%;
 }
-<<<<<<< HEAD
 .main-sift-money {
   width: 100%;
   display: flex;
@@ -286,6 +285,4 @@ export default {
   margin-top: 4%;
   margin-left: 4%;
 }
-=======
->>>>>>> wangyanxia
 </style>
