@@ -247,42 +247,4 @@ export default {
   text-align: center;
   margin-left: 5%;
 }
-.main-sift-money {
-  width: 100%;
-  display: flex;
-  height: 30px;
-  line-height: 30px;
-  margin-top: 3%;
-  padding-left: 2%;
-}
-.main-sift-money1 {
-  color: #e16982;
-  font-size: 18px;
-}
-.main-sift-money h1 {
-  font-size: 24px;
-  color: #e16982;
-}
-.main-sift-money2 {
-  color: #938c62;
-  margin-top: 2%;
-  font-size: 14px;
-  margin-left: 3%;
-}
-.main-sift-money img {
-  width: 24px;
-  height: 12px;
-  margin-top: 6%;
-  margin-left: 3%;
-}
-.main-sift-money div {
-  background: #ffe3ee;
-  color: #d87991;
-  width: 56px;
-  height: 16px;
-  font-size: 14px;
-  line-height: 16px;
-  margin-top: 4%;
-  margin-left: 4%;
-}
 </style>

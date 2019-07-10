@@ -2,6 +2,7 @@ import request from '@/utils/request';
 
 //商品详情信息
 export let shopDel = params => {
+    console.log('dafafa',params)
     return request.post('/api/open/product/info/1.0.0', params);
 }
 

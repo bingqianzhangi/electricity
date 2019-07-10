@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="main-sift-dl-box">
-        <div class="main-sift-dl" v-for="(item,index) in product" :key="index">
+        <div class="main-sift-dl" v-for="(item,index) in product" :key="index" @click="shopDetail">
           <div class="main-sift-dl-img">
             <img :src="item.productVo.mainImgUrl" alt />
           </div>
@@ -43,7 +43,7 @@ export default {
   methods: {
     ...mapActions({
       productData: "index/Foryou"
-    })
+    }),
   },
   mounted() {
     this.productData();
