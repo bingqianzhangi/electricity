@@ -39,6 +39,12 @@ export default {
         wx.navigateTo({
           url: "pages/classify/main"
         });
+    },
+    search()
+    {
+      wx.navigateTo({
+        url:"/pages/index/search/main"
+      })
     }
     // ...mapActions({
     //  Tabchange: "index/Tabchange"
