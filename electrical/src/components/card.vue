@@ -13,7 +13,7 @@
           :interval="interval"
         >
           <swiper-item v-for="(item,index) in list[0].items" :key="index">
-            <img :src="item.imgUrl" class="swiper" />
+            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)"/>
           </swiper-item>
         </swiper>
       </div>
@@ -21,19 +21,19 @@
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">
-            <img :src="list[1].items[0].imgUrl" alt />
+            <img :src="list[1].items[0].imgUrl" alt>
           </div>
           <div class="top-right">
             <div class="top-right-img">
-              <img :src="list[1].items[1].imgUrl" alt />
+              <img :src="list[1].items[1].imgUrl" alt>
             </div>
             <div class="data-img">
-              <img :src="list[1].items[2].imgUrl" alt />
+              <img :src="list[1].items[2].imgUrl" alt>
             </div>
           </div>
         </div>
         <div class="top-bottom">
-          <img :src="list[3].pictUrl" alt />
+          <img :src="list[3].pictUrl" alt>
         </div>
       </div>
       <div class="main-sift">
@@ -49,12 +49,12 @@
         </div>
         <div class="main-sift-goods">
           <div class="main-sift-every" v-for="(item,index) in list[4].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <img :src="item.imgUrl" class="main-sift-every-img">
             <div class="main-sift-every-div">{{item.title}}</div>
             <h2>${{item.salesPrice}}</h2>
           </div>
           <div class="top-bottom">
-            <img :src="list[5].pictUrl" alt />
+            <img :src="list[5].pictUrl" alt>
           </div>
         </div>
       </div>
@@ -71,12 +71,12 @@
         </div>
         <div class="main-sift-goods">
           <div class="main-sift-every" v-for="(item,index) in list[6].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <img :src="item.imgUrl" class="main-sift-every-img">
             <div class="main-sift-every-div">{{item.title}}</div>
             <h2>${{item.salesPrice}}</h2>
           </div>
           <div class="top-bottom">
-            <img :src="list[7].pictUrl" alt />
+            <img :src="list[7].pictUrl" alt>
           </div>
         </div>
       </div>
@@ -93,12 +93,12 @@
         </div>
         <div class="main-sift-goods">
           <div class="main-sift-every" v-for="(item,index) in list[8].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <img :src="item.imgUrl" class="main-sift-every-img">
             <div class="main-sift-every-div">{{item.title}}</div>
             <h2>${{item.salesPrice}}</h2>
           </div>
           <div class="top-bottom">
-            <img :src="list[9].pictUrl" alt />
+            <img :src="list[9].pictUrl" alt>
           </div>
         </div>
       </div>
@@ -115,12 +115,12 @@
         </div>
         <div class="main-sift-goods">
           <div class="main-sift-every" v-for="(item,index) in list[10].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img" />
+            <img :src="item.imgUrl" class="main-sift-every-img">
             <div class="main-sift-every-div">{{item.title}}</div>
             <h2>${{item.salesPrice}}</h2>
           </div>
           <div class="top-bottom">
-            <img :src="list[11].pictUrl" alt />
+            <img :src="list[11].pictUrl" alt>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@
       </div>
       <div class="main-sift-goods">
         <div class="main-sift-every" v-for="(item,index) in list[12].items" :key="index">
-          <img :src="item.imgUrl" class="main-sift-every-img" />
+          <img :src="item.imgUrl" class="main-sift-every-img">
           <div class="main-sift-every-div">{{item.title}}</div>
           <h2>${{item.salesPrice}}</h2>
         </div>
@@ -166,7 +166,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      Goothing: "index/Index"
+      Goothing: "index/Index",
+      getBanner: "index/Query"
     }),
     switchTab: function(prompt, res) {
       let oIndex = res.mp.currentTarget.dataset.current;
@@ -175,6 +176,14 @@ export default {
     switchItem: function(prompt, res) {
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
+    },
+    clcikImg(item) {
+      console.log("1111", item);
+      this.getBanner({siid:item.contentValue});
+      wx.navigateTo({
+        url: "/pages/content/labelDetail/main"
+      });
+      
     }
   },
   mounted() {
