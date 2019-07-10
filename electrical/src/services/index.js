@@ -19,6 +19,6 @@ export let TabList = params => {
 //tab列表
 
 export let getTab=params=>{
-    console.log(params)
-    return request.post(`/api/open/product/category/productList/1.0.0?pageIndex=1&cid=${params}&sortType=1`);
+    console.log('params',params)
+    return request.post(`/api/open/product/category/productList/1.0.0?pageIndex=${params.pageIndex}&cid=${params.cid}&sortType=${params.sortType}`);
 }

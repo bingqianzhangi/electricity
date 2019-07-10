@@ -17,7 +17,7 @@ const actions = {
     commit('SetTabList', data)
   },
   async getTabList({ commit }, payload) {
-    console.log(payload)
+    console.log('payload...',payload)
     let data = await getTab(payload);
     // console.log(data)
     commit('getTabLists', data)

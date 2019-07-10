@@ -3,7 +3,7 @@
     <view class="section section_gap">
       <scroll-view class="scroll-view_W" scroll-x>
         <view id="green" class="scroll-view-item_W">今日推荐</view>
-        <view v-for='item in list' :key='item.sortId' @click="btn(item.cid,item.childs
+        <view v-for='(item,index) in list' :class="{active:index==isShow}" :key='item.sortId' @click="btn(index,item.cid,item.childs
         )">{{item.cname}}</view>
       </scroll-view>
     </view>
@@ -17,7 +17,8 @@
     data() {
       return {
         children: [],
-        cid: 1
+        cid: 1,
+        isShow: 0
       };
     },
     components: {
@@ -34,14 +35,16 @@
         Tabs: "tab/Tab",
         Lists: "tab/getTabList"
       }),
-
-      btn(id, childs) {
+      btn(index, id, childs) {
+        this.isShow = index;
         this.children = childs;
-        this.cid = id
+        this.cid = id;
         // console.log(this.children)
-        this.Lists(
-          this.cid
-        );
+        this.Lists({
+          pageIndex: 1,
+          cid: this.cid,
+          sortType: 1,
+        });
       }
     },
     mounted() {
@@ -78,9 +81,13 @@
     display: inline-block;
     height: 100rpx;
     text-align: center;
-    color: #484848;
     box-sizing: border-box;
     margin: 0 20rpx;
 
+  }
+
+  .active {
+    border-bottom:6rpx solid #56d2bf;
+    color: #56d2bf;
   }
 </style>

@@ -1,46 +1,50 @@
 <template>
   <div>
     <view class='main'>
-      <view v-for='item in childrens' :key='item.sortId'>
+      <view v-for='item in childrens' :key='item.sortId' @click='screen(item.cid)'>
         <img :src="item.imgUrl">
         <label for="">{{item.cname}}</label>
       </view>
     </view>
 
     <view class='tabr'>
-      <view>综合</view>
-      <view>最新</view>
+      <view @click='all'>综合</view>
+      <view @click='news'>最新</view>
       <view class='_li'>
-        <view>价格</view>
-        <label class='addActive' for="">△</label>
+        <view @click='price'>价格</view>
+        <label class='pri_up active ' for="">△</label>
         <label class='pri_bottom' for="">▽</label>
       </view>
     </view>
 
-    <view class='dls'>
-      <view class='_dl' v-for='(item,index) in list' :key='index' >
-        <view class='_dt'>
-          <label for="">
-            <img :src="item.mainImgUrl" alt="">
-          </label>
-        </view>
-        <view class='_dd'>
-          <view class='_h3'>{{item.title}}</view>
-          <view class='coupon'>
-            <label for="">包税</label>
+    <scroll-view scroll-y bindscrolltolower="lower" bindscroll="scroll">
+      <view class='dls'>
+        <view class='_dl' v-for='(item,index) in list' :key='index'>
+          <view class='_dt'>
+            <label for="">
+              <img :src="item.mainImgUrl" alt="">
+            </label>
           </view>
-          <view class='price'>
-            <view class='h4'>
-              <label for="">￥</label>
-              <label for="">{{item.salesPrice}}</label>
+          <view class='_dd'>
+            <view class='_h3'>{{item.title}}</view>
+            <view class='coupon'>
+              <label for="">包税</label>
             </view>
-            <label class='_span' for="">￥{{item.vipPrice}}</label>
-            <label class='_right' for="">赚￥{{item.earnMoney}}</label>
+            <view class='price'>
+              <view class='h4'>
+                <label for="">￥</label>
+                <label for="">{{item.salesPrice}}</label>
+              </view>
+              <label class='_span' for="">￥{{item.vipPrice}}</label>
+              <label class='_right' for="">赚￥{{item.earnMoney}}</label>
+            </view>
           </view>
         </view>
+
       </view>
-     
-    </view>
+    </scroll-view>
+
+
   </div>
 </template>
 <script>
@@ -49,7 +53,7 @@
     props: ['childrens', 'cid'],
     data() {
       return {
-
+        isup: true
       }
     },
     computed: {
@@ -64,13 +68,64 @@
       ...mapActions({
         Lists: "tab/getTabList"
       }),
+      screen(id) {
+        this.Lists({
+          pageIndex: 1,
+          cid: id,
+          sortType: 1,
+        });
+      },
+      all() {
+        this.Lists({
+          pageIndex: 1,
+          cid: this.cid,
+          sortType: 1,
+        });
+      },
+      news() {
+        this.Lists({
+          pageIndex: 1,
+          cid: this.cid,
+          sortType: 2,
+        });
+      },
+      price() {
+        if (this.isup) {
+          this.Lists({
+            pageIndex: 1,
+            cid: this.cid,
+            sortType: 4,
+          });
+          this.isup = false
+        } else {
+          this.Lists({
+            pageIndex: 1,
+            cid: this.cid,
+            sortType: 3,
+          });
+          this.isup = true
+        }
+
+      }
     },
     mounted() {
       console.log('cid', this.cid)
-      this.Lists(
-         this.cid
+      this.Lists({
+        pageIndex: 1,
+        cid: this.cid,
+        sortType: 1,
+      }
       );
     },
+    // onPageScroll: function (e) {
+    //   console.log(this.data.scrollHeight)
+    //   if (e.scrollTop > this.data.scrollHeight) {
+    //     // 滚动到最底部
+    //     e.scrollTop = this.data.scrollHeight;
+    //     console.log(1)
+    //   }
+    // }
+
   }
 </script>
 <style>
@@ -123,7 +178,7 @@
     position: relative;
   }
 
-  .addActive {
+  .pri_up {
     position: absolute;
     right: -25rpx;
     overflow: hidden;
@@ -132,7 +187,7 @@
     border-width: 10rpx;
     border-style: solid dashed dashed;
     top: 19rpx;
-    border-color: transparent transparent #fc5d7b
+    border-color: transparent transparent #d8d8d8
   }
 
   .pri_bottom {
@@ -145,6 +200,10 @@
     border-style: solid dashed dashed;
     top: 49rpx;
     border-color: #d8d8d8 transparent transparent
+  }
+
+  .active {
+    border-color: transparent transparent #fc5d7b
   }
 
   .dls {
