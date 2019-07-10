@@ -7,7 +7,7 @@
         )">{{item.cname}}</view>
       </scroll-view>
     </view>
-    <Tab :children='children'  :cid='cid' />
+    <Tab :childrens='children' :cid='cid' />
   </div>
 </template>
 <script>
@@ -17,7 +17,7 @@
     data() {
       return {
         children: [],
-        cid: 0
+        cid: 1
       };
     },
     components: {
@@ -25,22 +25,27 @@
     },
     computed: {
       ...mapState({
-        list: state => state.tab.list
+        list: state => state.tab.list,
+        lists: state => state.tab.Lists
       })
     },
     methods: {
       ...mapActions({
-        Tab: "tab/Tab"
+        Tabs: "tab/Tab",
+        Lists: "tab/getTabList"
       }),
+
       btn(id, childs) {
         this.children = childs;
-        this.cid=id
-        
+        this.cid = id
+        // console.log(this.children)
+        this.Lists(
+          this.cid
+        );
       }
     },
     mounted() {
-      this.Tab();
-      
+      this.Tabs();
     },
     onShow() {
     },

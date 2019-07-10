@@ -1,7 +1,8 @@
-import { TabList } from "../../services/index";
+import { TabList ,getTab} from "../../services/index";
 const state = {
   list: [],
-  parentId:0
+  parentId:0,
+  Lists:[]
 }
 //派生数据
 const getters = {
@@ -15,6 +16,12 @@ const actions = {
     let data = await TabList(params);
     commit('SetTabList', data)
   },
+  async getTabList({ commit }, payload) {
+    console.log(payload)
+    let data = await getTab(payload);
+    // console.log(data)
+    commit('getTabLists', data)
+  },
 }
 //同步改变,改变数据的唯一途径
 const mutations = {
@@ -22,6 +29,11 @@ const mutations = {
     // console.log('pat',payload)
     state.list = payload.result;
     console.log("state.list...", state.list)
+  },
+  getTabLists(state, payload) {
+    // console.log('pat',payload)
+    state.Lists = payload.result;
+    console.log("state.lISTS...", state.Lists)
   },
 }
 export default {

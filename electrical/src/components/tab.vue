@@ -1,7 +1,7 @@
 <template>
   <div>
     <view class='main'>
-      <view v-for='item in children' :key='item.sortId' >
+      <view v-for='item in childrens' :key='item.sortId'>
         <img :src="item.imgUrl">
         <label for="">{{item.cname}}</label>
       </view>
@@ -18,131 +18,58 @@
     </view>
 
     <view class='dls'>
-      <view class='_dl'>
+      <view class='_dl' v-for='(item,index) in list' :key='index' >
         <view class='_dt'>
           <label for="">
-            <img src="https://jnup.oss-cn-beijing.aliyuncs.com/product/5ac6b26d76b321b2e995ec9b6a5bb360.png" alt="">
+            <img :src="item.mainImgUrl" alt="">
           </label>
         </view>
         <view class='_dd'>
-          <view class='_h3'>【保税包邮】澳大利亚A2白金系列3段婴儿配方奶粉900g/罐 *6罐</view>
+          <view class='_h3'>{{item.title}}</view>
           <view class='coupon'>
             <label for="">包税</label>
           </view>
           <view class='price'>
             <view class='h4'>
               <label for="">￥</label>
-              <label for="">1299</label>
+              <label for="">{{item.salesPrice}}</label>
             </view>
-            <label class='_span' for="">￥1225.93</label>
-            <label class='_right' for="">赚￥73.07</label>
+            <label class='_span' for="">￥{{item.vipPrice}}</label>
+            <label class='_right' for="">赚￥{{item.earnMoney}}</label>
           </view>
         </view>
       </view>
-      <view class='_dl'>
-        <view class='_dt'>
-          <label for="">
-            <img src="https://jnup.oss-cn-beijing.aliyuncs.com/product/5ac6b26d76b321b2e995ec9b6a5bb360.png" alt="">
-          </label>
-        </view>
-        <view class='_dd'>
-          <view class='_h3'>【保税包邮】澳大利亚A2白金系列3段婴儿配方奶粉900g/罐 *6罐</view>
-          <view class='coupon'>
-            <label for="">包税</label>
-          </view>
-          <view class='price'>
-            <view class='h4'>
-              <label for="">￥</label>
-              <label for="">1299</label>
-            </view>
-            <label class='_span' for="">￥1225.93</label>
-            <label class='_right' for="">赚￥73.07</label>
-          </view>
-        </view>
-      </view>
-      <view class='_dl'>
-        <view class='_dt'>
-          <label for="">
-            <img src="https://jnup.oss-cn-beijing.aliyuncs.com/product/5ac6b26d76b321b2e995ec9b6a5bb360.png" alt="">
-          </label>
-        </view>
-        <view class='_dd'>
-          <view class='_h3'>【保税包邮】澳大利亚A2白金系列3段婴儿配方奶粉900g/罐 *6罐</view>
-          <view class='coupon'>
-            <label for="">包税</label>
-          </view>
-          <view class='price'>
-            <view class='h4'>
-              <label for="">￥</label>
-              <label for="">1299</label>
-            </view>
-            <label class='_span' for="">￥1225.93</label>
-            <label class='_right' for="">赚￥73.07</label>
-          </view>
-        </view>
-      </view>
-      <view class='_dl'>
-        <view class='_dt'>
-          <label for="">
-            <img src="https://jnup.oss-cn-beijing.aliyuncs.com/product/5ac6b26d76b321b2e995ec9b6a5bb360.png" alt="">
-          </label>
-        </view>
-        <view class='_dd'>
-          <view class='_h3'>【保税包邮】澳大利亚A2白金系列3段婴儿配方奶粉900g/罐 *6罐</view>
-          <view class='coupon'>
-            <label for="">包税</label>
-          </view>
-          <view class='price'>
-            <view class='h4'>
-              <label for="">￥</label>
-              <label for="">1299</label>
-            </view>
-            <label class='_span' for="">￥1225.93</label>
-            <label class='_right' for="">赚￥73.07</label>
-          </view>
-        </view>
-      </view>
-      <view class='_dl'>
-        <view class='_dt'>
-          <label for="">
-            <img src="https://jnup.oss-cn-beijing.aliyuncs.com/product/5ac6b26d76b321b2e995ec9b6a5bb360.png" alt="">
-          </label>
-        </view>
-        <view class='_dd'>
-          <view class='_h3'>【保税包邮】澳大利亚A2白金系列3段婴儿配方奶粉900g/罐 *6罐</view>
-          <view class='coupon'>
-            <label for="">包税</label>
-          </view>
-          <view class='price'>
-            <view class='h4'>
-              <label for="">￥</label>
-              <label for="">1299</label>
-            </view>
-            <label class='_span' for="">￥1225.93</label>
-            <label class='_right' for="">赚￥73.07</label>
-          </view>
-        </view>
-      </view>
+     
     </view>
   </div>
 </template>
 <script>
-
+  import { mapState, mapActions, mapMutations } from "vuex";
   export default {
-    porps:['children','cid'],
+    props: ['childrens', 'cid'],
     data() {
       return {
-       
+
       }
     },
-    onShow() {
-      console.log('children',this.children)
+    computed: {
+      ...mapState({
+        list: state => state.tab.Lists
+      })
     },
-    methods: {
+    onShow() {
 
     },
+    methods: {
+      ...mapActions({
+        Lists: "tab/getTabList"
+      }),
+    },
     mounted() {
-      
+      console.log('cid', this.cid)
+      this.Lists(
+         this.cid
+      );
     },
   }
 </script>
