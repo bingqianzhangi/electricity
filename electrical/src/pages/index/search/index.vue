@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="box" scroll-y @scroll="listscroll">
+    <div class="box">
       <div class="top">
         <input v-model="text" placeholder="搜索" type="text" @input="updateinput" @confirm="submit" />
         <img src="../../../../static/images/searchimg.png" alt />
