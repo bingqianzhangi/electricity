@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="main-sift-dl-box">
-        <div class="main-sift-dl" v-for="(item,index) in product" :key="index" @click="shopDetail">
+        <div class="main-sift-dl" v-for="(item,index) in product" :key="index" @click="shopDetail(item.productVo.jumpUrl)">
           <div class="main-sift-dl-img">
             <img :src="item.productVo.mainImgUrl" alt />
           </div>
@@ -34,16 +34,32 @@
 </template>
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
+import { getParams } from '@/utils/getParams';
+
 export default {
   computed: {
     ...mapState({
-      product: state => state.index.productlist
+      product: state => state.index.productlist,
+      detailList:state=>state.shopDetail.detailList
     })
   },
   methods: {
     ...mapActions({
-      productData: "index/Foryou"
+      productData: "index/Foryou",
+      getDetail:'shopDetail/getDetail',
+      getChoose:'shopDetail/getChoose',
+      getPic:'shopDetail/getPic',
+      getRemind:'shopDetail/getRemind',
     }),
+    shopDetail(id){
+      console.log(id)
+      let pId=getParams(id).businessId;
+      this.getDetail({pid:pId});
+      this.getChoose({pid:pId});
+      this.getPic({pid:pId, basePid:'36482',userIdentity:'2'});
+      this.getRemind({sstid:this.detailList.sstid})
+      wx.navigateTo({ url: '/pages/content/shopDetail/main'});
+    }
   },
   mounted() {
     this.productData();

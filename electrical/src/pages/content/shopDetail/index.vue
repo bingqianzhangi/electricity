@@ -1,16 +1,21 @@
 <template>
     <div class="wrap_detail">
-        <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">
+        <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000" v-if="detailList.supplierProductPictureVoList.length">
             <block v-for="(item,index) in detailList.supplierProductPictureVoList" :key="item.sortId">
                 <swiper-item>
                     <image :src="item.imgUrl" class="slide-image"/>
                 </swiper-item>
             </block>
         </swiper>
+        <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000" v-else>
+            <swiper-item>
+                <image :src="detailList.mainImgUrl" class="slide-image"/>
+            </swiper-item>
+        </swiper>
         <div class="price_box">
             <div class="price">
                 <h5><span>￥</span><b>{{detailList.salesPrice}}</b></h5>
-                <div><span>77.08</span><img src="/static/images/黑卡@2x.png" alt="" class="vip"></div>
+                <div><span>{{detailList.vipPrice}}</span><img src="/static/images/黑卡@2x.png" alt="" class="vip"></div>
             </div>
             <div class="share">分享赚<span>{{detailList.earnMoney}}</span></div>
         </div>
@@ -27,7 +32,7 @@
                             <span>{{item.aname}}</span>
                         </block>
                     </div>
-                    <div class="type_params">
+                    <div class="type_params" @click="buy">
                         <span>jy</span>
                         <span>xl</span>
                         <span>银灰色</span>
@@ -35,16 +40,16 @@
                     </div>                 
                 </div>
             </div>
-            <div class="explain">
+            <div class="explain" v-if="detailList.description==''?false:true">
                 <span>说明</span>
                 <div>
                     <span>{{detailList.description}}</span>
                 </div>
             </div>
-            <div class="explain">
+            <div class="explain" v-if="remind==''?false:true">
                 <span>提示</span>
                 <div>
-                    <span>{{detailList.description}}</span>
+                    <span>{{remind}}</span>
                 </div>
             </div>
         </div>
@@ -65,7 +70,7 @@
 
 <script>
 import Type  from '@/components/type.vue'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     data() {
@@ -81,19 +86,23 @@ export default {
             detailList:state=>state.shopDetail.detailList,
             chooseList:state=>state.shopDetail.chooseList,
             picList:state=>state.shopDetail.picList,
+            remind:state=>state.shopDetail.remind
         })
     },
     methods: {
+        ...mapActions({
+            getRemind:'shopDetail/getRemind',
+        }),
         buy(){
-            // this.show = true;
-            console.log(this.detailList)
-            console.log('xuanze',this.chooseList)
-            console.log('1111wq',this.picList)
+            this.show = true;
         },
         close(){
             this.show=false;
-        }     
+        }   
     },
+    onShow(){
+         this.getRemind({sstid:this.detailList.sstid})
+    }
 }
 </script>
 
@@ -211,10 +220,12 @@ export default {
         height: 43px;
         display: flex;
         align-items: center;
-        span{
+        >span{
+            width: 30px;
             color: #676767;
         }
         >div{
+            flex: 1;
             margin-left: 5px;
             span{
                 color: #fc5d7b;

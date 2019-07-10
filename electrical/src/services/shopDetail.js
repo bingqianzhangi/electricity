@@ -9,7 +9,7 @@ export let shopDel = params => {
 
 //商品详情提示
 export let shopRemind = params => {
-    return request.post(`/api/open/shipping/templates/info/1.0.0sstid=${params.sstid}`);
+    return request.post(`/api/open/shipping/templates/info/1.0.0?sstid=${params.sstid}`);
 }
 
 //商品详情选择

@@ -3,7 +3,8 @@ import { shopDel, shopRemind, shopChoose, shopPic, shopBounce } from "@/services
 const state = {
     detailList:[],
     chooseList:[],
-    picList:[]
+    picList:[],
+    remind:''
 }
 
 //派生数据
@@ -16,18 +17,23 @@ const actions = {
     //商品详情信息
     async getDetail({ commit }, payload) {
         let data = await shopDel(payload);
+        console.log('list',data);
         commit('upDetail', data.result)
     },
     //商品详情选择
-    async getRemind({ commit }, payload) {
+    async getChoose({ commit }, payload) {
         let data = await shopChoose(payload);
         commit('upChoose',data.result)
     },
     //商品详情图
     async getPic({ commit }, payload) {
         let data = await shopPic(payload);
-        console.log('pic',data)
         commit('upPic',data.result)
+    },
+    async getRemind({ commit }, payload) {
+        let data = await shopRemind(payload);
+        console.log('remind',data);
+        commit('upRemind',data.result)
     }
 }
 
@@ -41,6 +47,9 @@ const mutations = {
     },
     upPic(state,payload){
         state.picList=payload;
+    },
+    upRemind(state,payload){
+        state.remind=payload;
     }
 }
 

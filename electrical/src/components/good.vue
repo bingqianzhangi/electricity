@@ -15,20 +15,31 @@ import { getParams } from '@/utils/getParams';
 
 export default {
   props: ["message"],
+  data(){
+    return {}
+  },
+  computed: {
+    ...mapState({
+          detailList:state=>state.shopDetail.detailList
+    })
+  },
   methods: {
     ...mapActions({
       getDetail:'shopDetail/getDetail',
-      getRemind:'shopDetail/getRemind',
+      getChoose:'shopDetail/getChoose',
       getPic:'shopDetail/getPic',
+      // getRemind:'shopDetail/getRemind',
     }),
     shopDetail(id,item){
       // console.log(getParams(id).businessId)
+      console.log('dddd',this.detailList)
       console.log('111222',item)
       let pId=getParams(id).businessId;
       this.getDetail({pid:pId});
-      this.getRemind({pid:pId});
+      this.getChoose({pid:pId});
       this.getPic({pid:pId, basePid:'36482',userIdentity:'2'});
-      wx.navigateTo({ url: '/pages/content/shopDetail/main' });
+      // this.getRemind({sstid:this.detailList.sstid})
+      wx.navigateTo({ url: '/pages/content/shopDetail/main'});
     }
   },
 };
