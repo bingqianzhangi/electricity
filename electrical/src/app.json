@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/search/main",
     "pages/index/main",
+    "pages/index/search/main",
     "pages/my/obligation/main",
     "pages/my/coupon/main",
     "pages/my/myaddress/main",
