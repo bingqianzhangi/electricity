@@ -1,41 +1,4 @@
-<<<<<<< HEAD
-<template> 
-    <div class="wrap_type">
-        <div class="content">
-            <div class="choose_type">
-                <div>
-                    <block v-for="(item,index) in chooseList" :key="item.aid">
-                        <span>{{item.aname}}</span>
-                    </block>
-                </div>
-                <span class="close" @click="close">X</span>
-            </div>
-            <dl>
-                <dt><img :src="mainImgUrl" alt=""></dt>
-                <dd>
-                    <h4><span>￥</span><b>{{salesPrice}}</b></h4>
-                    <p><span>库存：</span><b></b></p>
-                </dd>
-            </dl>
-            <div class="type_data">
-                <div class="data">
-                    <span>默认</span>
-                    <div>
-                        <block v-for="(item,index) in chooseList[0].attributeValueRelationVoList" :key="item.vid">
-                            <span :class="index==ind?'active':''" @click="style(index,item)">{{item.vname}}</span>
-                        </block>
-                    </div>
-                </div>
-            </div>
-            <div class="sum">
-                <span>数量</span>
-                <div>
-                    <span @click="del">-</span>
-                    <b>{{num}}</b>
-                    <span @click="add">+</span>
-                </div>
-            </div>
-=======
+
 <template>
   <div class="wrap_type">
     <div class="content">
@@ -44,7 +7,6 @@
           <block v-for="(item,index) in chooseList" :key="item.aid">
             <span>{{item.aname}}</span>
           </block>
->>>>>>> 1eeda4b9931cb2034ce0e7cd3d1dede4aac58cd5
         </div>
         <span class="close" @click="close">X</span>
       </div>
@@ -93,41 +55,7 @@
 import { mapActions, mapState } from "vuex";
 
 export default {
-<<<<<<< HEAD
-    props:['hasShow',"chooseList","salesPrice","mainImgUrl","pid"],
-    data() {
-        return {
-            num:1,
-            flag: true,
-            ind:0
-        }
-    },
-    methods: {
-        ...mapActions({
-            getBounce:"shopDetail/getBounce"
-        }),
-        close(){
-            this.$emit('closeShow');
-        },
-        add(){
-            this.num++;
-            console.log(this.chooseList[0].attributeValueRelationVoList)
-        },
-        del(){
-            this.num <= 0 ? 0 : this.num--;
-        },
-        sure(){
-            this.$emit('closeShow');
-        },
-        async style(i,item){
-            console.log('ww',item.vid,item.pid)
-            this.ind=i;
-            this.getBounce({
-                pid:item.pid,
-                vids:'['+item.vids+']'
-            })
-        }
-=======
+
   props: ["hasShow", "chooseList", "salesPrice", "mainImgUrl", "pid"],
   data() {
     return {
@@ -151,7 +79,6 @@ export default {
     },
     del() {
       this.num <= 0 ? 0 : this.num--;
->>>>>>> 1eeda4b9931cb2034ce0e7cd3d1dede4aac58cd5
     },
     sure() {
       this.$emit("closeShow");
