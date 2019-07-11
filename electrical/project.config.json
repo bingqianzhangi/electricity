@@ -5,7 +5,7 @@
 	},
 	"setting": {
 		"urlCheck": false,
-		"es6": true,
+		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
@@ -41,7 +41,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
@@ -54,12 +54,14 @@
 					"id": -1,
 					"name": "详情1",
 					"pathName": "pages/content/shopDetail/main",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "详情2",
 					"pathName": "pages/content/labelDetail/main",
+					"query": "",
 					"scene": null
 				}
 			]
