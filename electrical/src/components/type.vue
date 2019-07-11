@@ -1,80 +1,91 @@
-<template> 
-    <div class="wrap_type">
-        <div class="content">
-            <div class="choose_type">
-                <div>
-                    <block v-for="(item,index) in chooseList" :key="item.aid">
-                        <span>{{item.aname}}</span>
-                    </block>
-                </div>
-                <span class="close" @click="close">X</span>
-            </div>
-            <dl>
-                <dt><img :src="mainImgUrl" alt=""></dt>
-                <dd>
-                    <h4><span>￥</span><b>{{salesPrice}}</b></h4>
-                    <p><span>库存：</span><b></b></p>
-                </dd>
-            </dl>
-            <div class="type_data">
-                <div class="data">
-                    <span>默认</span>
-                    <div>
-                        <block v-for="(item,index) in chooseList[0].attributeValueRelationVoList" :key="item.vid">
-                            <span :class="index==ind?'active':''" @click="style(index)">{{item.vname}}</span>
-                        </block>
-                    </div>
-                </div>
-            </div>
-            <div class="sum">
-                <span>数量</span>
-                <div>
-                    <span @click="del">-</span>
-                    <b>{{num}}</b>
-                    <span @click="add">+</span>
-                </div>
-            </div>
+<template>
+  <div class="wrap_type">
+    <div class="content">
+      <div class="choose_type">
+        <div>
+          <block v-for="(item,index) in chooseList" :key="item.aid">
+            <span>{{item.aname}}</span>
+          </block>
         </div>
-        <button @click="sure">确定</button>
+        <span class="close" @click="close">X</span>
+      </div>
+      <dl>
+        <dt>
+          <img :src="mainImgUrl" alt />
+        </dt>
+        <dd>
+          <h4>
+            <span>￥</span>
+            <b>{{salesPrice}}</b>
+          </h4>
+          <p>
+            <span>库存：</span>
+            <b></b>
+          </p>
+        </dd>
+      </dl>
+      <div class="type_data">
+        <div class="data">
+          <span>默认</span>
+          <div>
+            <block
+              v-for="(item,index) in chooseList[0].attributeValueRelationVoList"
+              :key="item.vid"
+            >
+              <span :class="index==ind?'active':''" @click="style(index)">{{item.vname}}</span>
+            </block>
+          </div>
+        </div>
+      </div>
+      <div class="sum">
+        <span>数量</span>
+        <div>
+          <span @click="del">-</span>
+          <b>{{num}}</b>
+          <span @click="add">+</span>
+        </div>
+      </div>
     </div>
+    <button @click="sure">确定</button>
+  </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState } from "vuex";
 
 export default {
-    props:['hasShow',"chooseList","salesPrice","mainImgUrl","pid"],
-    data() {
-        return {
-            num:0,
-            flag: true,
-            ind:0
-        }
+  props: ["hasShow", "chooseList", "salesPrice", "mainImgUrl", "pid"],
+  data() {
+    return {
+      num: 0,
+      flag: true,
+      ind: 0
+    };
+  },
+  mounted() {
+    // ...mapActions({
+    //     getBounce:shopDetail.getBounce
+    // })
+  },
+  methods: {
+    close() {
+      this.$emit("closeShow");
     },
-    mounted() {
-        // ...mapActions({
-        //     getBounce:shopDetail.getBounce
-        // })
+    add() {
+      this.num++;
+      console.log(this.chooseList[0].attributeValueRelationVoList);
     },
-    methods: {
-        close(){
-            this.$emit('closeShow');
-        },
-        add(){
-            this.num++;
-            console.log(this.chooseList[0].attributeValueRelationVoList)
-        },
-        del(){
-            this.num <= 0 ? 0 : this.num--;
-        },
-        sure(){
-            this.$emit('closeShow');
-        },
-        style(i){
-            this.ind=i;
-        }
+    del() {
+      this.num <= 0 ? 0 : this.num--;
     },
-}
+    sure() {
+      this.$emit("closeShow");
+    },
+    style(i) {
+      this.ind = i;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -137,11 +148,11 @@ dl{
             display: flex;
             flex-wrap: wrap;
             >span{
-                padding: 2px 8px;
+                padding: 2px 10px;
                 border: 1px solid rgb(153,157,162);
                 border-radius: 5px;
                 margin: 10px 10px 0;
-                font-size: 12px;
+                font-size: 14px;
             }
             .active{
                 background: rgb(51,214,197);
