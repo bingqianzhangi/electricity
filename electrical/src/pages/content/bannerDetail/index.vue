@@ -2,10 +2,10 @@
   <div class="box">
     <div class="img">
       <img
-        :src="labelList.specialImg"
+        :src="bannerList.specialImg"
         alt>
       <scroll-view class="scroll-view-vertical" scroll-y="true" @scroll="viewScroll">
-        <h4>{{labelList.specialName}}</h4>
+        <h4>{{bannerList.specialName}}</h4>
       </scroll-view>
     </div>
     <scroll-view scroll-y="true" style="height: 600px">
@@ -15,7 +15,7 @@
           <span class="dian"></span>
         </p>
         <p class="font">
-          <span>{{labelList.specialName}}</span>
+          <span>{{bannerList.specialName}}</span>
         </p>
         <p class="right">
           <span class="dian"></span>
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     ...mapState({
-      labelList: state => state.index.labelList
+      bannerList: state => state.index.bannerList
     })
   }
 };
