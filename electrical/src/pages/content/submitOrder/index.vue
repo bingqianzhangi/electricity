@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped >
 .wrap_order{
     width: 100%;
     height: 100%;

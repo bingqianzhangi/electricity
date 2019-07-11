@@ -38,7 +38,7 @@ const actions = {
     async getBounce({ commit }, payload) {
         let data = await shopBounce(payload);
         console.log('getBounce',data);
-        // commit('upRemind',data.result)
+        commit('upBounce',data);
     },
 }
 
