@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="wrap" scroll-y @scrolltolower="lower">
+    <div class="wrap" :scrollTop="scrollTop" scroll-y @scrolltolower="lower" @scroll="listscroll">
       <div class="box">
         <div class="top">
           <view class="search-input">
@@ -73,7 +73,8 @@ export default {
       text: "",
       flag: true,
       flags: false,
-      history: ""
+      history: "",
+      scrollTop: -1
     };
   },
   computed: {
@@ -89,10 +90,12 @@ export default {
     ...mapActions({
       getsearchlist: "index/getsearchlist"
     }),
+    listscroll(e) {
+      console.log(e);
+    },
     del() {
       wx.clearStorage();
-      this.history = "";
-      //  this.history = wx.getStorageSync("history");
+      this.history = [];
     },
     cencel(e) {
       this.flag = true;
@@ -185,13 +188,14 @@ export default {
     },
     lower(e) {
       this.pageIndex++;
-      console.log(this.pageIndex);
-      // this.getlist(
-      //   this.queryWord,
-      //   this.queryType,
-      //   this.querySort,
-      //   this.pageIndex
-      // );
+      console.log("this.pageindex", 1111);
+      console.log("this.pageIndex", this.pageIndex);
+      this.getlist(
+        this.queryWord,
+        this.queryType,
+        this.querySort,
+        this.pageIndex
+      );
     }
   }
 };
@@ -275,7 +279,7 @@ export default {
   background: #f2f8f8;
   padding-top: 4%;
   flex-wrap: wrap;
-  height: 400px;
+  height: auto;
 }
 .main-box {
   width: 48%;
