@@ -98,9 +98,14 @@ export default {
     methods: {
         ...mapActions({
             getRemind:'shopDetail/getRemind',
+            getBounce:"shopDetail/getBounce"
         }),
         buy(){
             this.show = true;
+            // this.getBounce({
+            //     pid:'22',
+            //     vid:'[2222]'
+            // })
         },
         close(){
             this.show=false;

@@ -21,7 +21,7 @@
                     <span>默认</span>
                     <div>
                         <block v-for="(item,index) in chooseList[0].attributeValueRelationVoList" :key="item.vid">
-                            <span :class="index==ind?'active':''" @click="style(index)">{{item.vname}}</span>
+                            <span :class="index==ind?'active':''" @click="style(index,item)">{{item.vname}}</span>
                         </block>
                     </div>
                 </div>
@@ -46,17 +46,15 @@ export default {
     props:['hasShow',"chooseList","salesPrice","mainImgUrl","pid"],
     data() {
         return {
-            num:0,
+            num:1,
             flag: true,
             ind:0
         }
     },
-    mounted() {
-        // ...mapActions({
-        //     getBounce:shopDetail.getBounce
-        // })
-    },
     methods: {
+        ...mapActions({
+            getBounce:"shopDetail/getBounce"
+        }),
         close(){
             this.$emit('closeShow');
         },
@@ -70,8 +68,13 @@ export default {
         sure(){
             this.$emit('closeShow');
         },
-        style(i){
+        async style(i,item){
+            console.log('ww',item.vid,item.pid)
             this.ind=i;
+            this.getBounce({
+                pid:item.pid,
+                vids:'['+item.vids+']'
+            })
         }
     },
 }
