@@ -1,7 +1,14 @@
 {
   "pages": [
     "pages/index/main",
+<<<<<<< HEAD
     "pages/index/search/main",
+=======
+    "pages/my/mine/main",  
+    "pages/content/shopDetail/main",
+    "pages/content/classify/main",
+    "pages/content/bannerDetail/main",
+>>>>>>> liangpengfei
     "pages/my/obligation/main",
     "pages/my/coupon/main",
     "pages/my/myaddress/main",

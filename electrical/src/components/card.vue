@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+<<<<<<< HEAD
       <div class="swiper">
         <swiper
           class="cont"
@@ -28,11 +29,29 @@
             </div>
             <div class="data-img">
               <img :src="list[1].items[2].imgUrl" alt />
+=======
+        <Swiper/>
+      <div class="top-img">
+        <div class="top-top">
+          <div class="top-left">
+            <img :src="list[1].items[0].imgUrl" @click="clcikImg(list[1].items[0].contentValue)" alt>
+          </div>
+          <div class="top-right">
+            <div class="top-right-img">
+              <img :src="list[1].items[1].imgUrl" @click="clcikImg(list[1].items[1].contentValue)" alt>
+            </div>
+            <div class="data-img">
+              <img :src="list[1].items[2].imgUrl" @click="clcikImg(list[1].items[2].contentValue)" alt>
+>>>>>>> liangpengfei
             </div>
           </div>
         </div>
         <div class="top-bottom">
+<<<<<<< HEAD
           <img :src="list[3].pictUrl" alt />
+=======
+          <img :src="list[3].pictUrl" @click="clcikImg(list[3].items[1])" alt>
+>>>>>>> liangpengfei
         </div>
       </div>
       <div class="main-sift">
@@ -109,7 +128,12 @@
         </div>
       </div>
       <div class="main-sift-goods">
+<<<<<<< HEAD
         <good :message="list[12].items"></good>
+=======
+          <good :message="list[12].items"></good>
+        </div>
+>>>>>>> liangpengfei
       </div>
     </div>
   </div>
@@ -119,6 +143,10 @@
 <script>
 import good from "@/components/good";
 import goodpic from "@/components/goodpic";
+<<<<<<< HEAD
+=======
+import Swiper from "@/components/swiper.vue";
+>>>>>>> liangpengfei
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
@@ -131,7 +159,12 @@ export default {
   },
   components: {
     good,
+<<<<<<< HEAD
     goodpic
+=======
+    goodpic,
+    Swiper
+>>>>>>> liangpengfei
   },
   computed: {
     ...mapState({
@@ -141,8 +174,14 @@ export default {
   methods: {
     ...mapActions({
       Goothing: "index/Index",
-      getBanner: "index/Query"
+      getBannerData:'index/Query'
     }),
+    //点击标签页
+    clcikImg(item){
+        console.log(item)
+        this.getBannerData({siid:item})
+        wx.navigateTo({ url: "/pages/content/bannerDetail/main" });
+    },
     switchTab: function(prompt, res) {
       let oIndex = res.mp.currentTarget.dataset.current;
       this.currentTab = oIndex;
@@ -150,6 +189,7 @@ export default {
     switchItem: function(prompt, res) {
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
+<<<<<<< HEAD
     },
     clcikImg(item) {
       console.log("1111", item);
@@ -157,6 +197,8 @@ export default {
       wx.navigateTo({
         url: "/pages/content/labelDetail/main"
       });
+=======
+>>>>>>> liangpengfei
     }
   },
   mounted() {
