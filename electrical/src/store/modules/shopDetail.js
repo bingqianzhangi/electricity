@@ -1,10 +1,11 @@
-import { shopDel, shopRemind, shopChoose, shopPic, shopBounce } from "@/services/shopDetail";
+import { shopDel, shopRemind, shopChoose, shopPic, shopBounce, buyShop } from "@/services/shopDetail";
 
 const state = {
     detailList:[],
     chooseList:[],
     picList:[],
-    remind:''
+    remind:'',
+    type:{}
 }
 
 //派生数据
@@ -37,9 +38,13 @@ const actions = {
     //商品详情底部弹框
     async getBounce({ commit }, payload) {
         let data = await shopBounce(payload);
-        console.log('getBounce',data);
-        commit('upBounce',data);
+        commit('upBounce',data.result);
     },
+    async getbuy({ commit },payload) {
+        let data = await buyShop(payload);
+        console.log('getBounce',data);
+        commit('upBuy',data);
+    }
 }
 
 //同步改变,改变数据的唯一途径
@@ -55,6 +60,12 @@ const mutations = {
     },
     upRemind(state,payload){
         state.remind=payload;
+    },
+    upBounce(state,payload){
+        state.type=payload;
+    },
+    upBuy(state,payload){
+        console.log(state)
     }
 }
 

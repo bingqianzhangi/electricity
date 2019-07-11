@@ -33,9 +33,7 @@
                         </block>
                     </div>
                     <div class="type_params" @click="buy">
-                        <span>jy</span>
-                        <span>xl</span>
-                        <span>银灰色</span>
+                        <span>{{type.skuName}}</span>
                         <img src="/static/images/jt.png" class="arrow" alt="">
                     </div>                 
                 </div>
@@ -60,10 +58,16 @@
         </div>
         <div class="footer_btns">
             <button class="share_btn">分享赚<span>{{detailList.earnMoney}}</span></button>
-            <button class="buy_btn" @click="buy">立即购买</button>
+            <button class="buy_btn" @click="handBuy">立即购买</button>
         </div>
         <div class="type_mack" v-if="show">
-            <Type :hasShow="show" @closeShow="close" />
+            <Type 
+            :hasShow="show" 
+            :chooseList="chooseList"
+            :salesPrice="detailList.salesPrice"
+            :mainImgUrl="detailList.mainImgUrl"
+            :pid="detailList.pid"
+            @closeShow="close" />
         </div>
     </div>
 </template>
@@ -86,21 +90,36 @@ export default {
             detailList:state=>state.shopDetail.detailList,
             chooseList:state=>state.shopDetail.chooseList,
             picList:state=>state.shopDetail.picList,
-            remind:state=>state.shopDetail.remind
+            remind:state=>state.shopDetail.remind,
+            type:state=>state.shopDetail.type
         })
     },
     methods: {
         ...mapActions({
             getRemind:'shopDetail/getRemind',
+            getBounce:'shopDetail/getBounce'
         }),
         buy(){
             this.show = true;
+            console.log('11',this.chooseList)
+            let arr=this.chooseList.map((item,index)=>{
+                return item.attributeValueRelationVoList[0].vid;
+            })
+            this.getBounce({
+                pid:this.chooseList[0].attributeValueRelationVoList[0].pid,
+                vids:'['+arr+']'
+            })
         },
         close(){
             this.show=false;
+        },
+        handBuy(){
+             wx.navigateTo({
+                url: "/pages/content/submitOrder/main"
+            });
         }   
     },
-    onShow(){
+    onReady(){
          this.getRemind({sstid:this.detailList.sstid})
     }
 }

@@ -76,11 +76,7 @@
           </div>
         </div>
         <div class="main-sift-goods">
-          <div class="main-sift-every" v-for="(item,index) in list[8].items" :key="index">
-            <img :src="item.imgUrl" class="main-sift-every-img">
-            <div class="main-sift-every-div">{{item.title}}</div>
-            <h2>${{item.salesPrice}}</h2>
-          </div>
+          <good :message="list[8].items"></good>
           <div class="top-bottom">
             <img :src="list[9].pictUrl" alt>
           </div>
@@ -161,7 +157,7 @@ export default {
       wx.navigateTo({
         url: "/pages/content/labelDetail/main"
       });
-      
+
     }
   },
   mounted() {
