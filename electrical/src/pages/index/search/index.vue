@@ -1,49 +1,59 @@
 <template>
   <div>
-    <div class="box">
-      <div class="top">
-        <input v-model="text" placeholder="搜索" type="text" @input="updateinput" @confirm="submit" />
-        <img src="../../../../static/images/searchimg.png" alt />
+    <div class="wrap" :scrollTop="scrollTop" scroll-y @scrolltolower="lower" @scroll="listscroll">
+      <div class="box">
+        <div class="top">
+          <view class="search-input">
+            <input
+              v-model="text"
+              @input="updateinput"
+              @confirm="submit"
+              placeholder="搜索"
+              auto-focusz
+            />
+          </view>
+          <img src="../../../../static/images/searchimg.png" alt />
+        </div>
+        <span class="cencel" @click="cencel">取消</span>
       </div>
-      <span class="cencel" @click="cencel">取消</span>
-    </div>
-    <div v-if="flag">
-      <div class="top-history">
-        <p>历史搜索</p>
-        <img src="../../../../static/images/del.jpg" alt @click="del" />
+      <div v-if="flag">
+        <div class="top-history">
+          <p>历史搜索</p>
+          <img src="../../../../static/images/del.jpg" alt @click="del" />
+        </div>
+        <div class="top-search-box">
+          <span
+            @click="golist(item)"
+            v-for="(item,index) in history"
+            :key="index"
+            class="top-search-text"
+          >{{item}}</span>
+        </div>
       </div>
-      <div class="top-search-box">
-        <span
-          @click="golist(item)"
-          v-for="(item,index) in history"
-          :key="index"
-          class="top-search-text"
-        >{{item}}</span>
-      </div>
-    </div>
 
-    <div v-else>
-      <ul>
-        <li @click="updateall">综合</li>
-        <li @click="updatenew">最新</li>
-        <li @click="updateprices('asc')">价格</li>
-      </ul>
-      <div class="none" v-if="flags">
-        <span @click="updateprices('desc')">价格从高到低</span>
-        <span @click="updateprices('asc')">价格从低到高</span>
-      </div>
-      <div class="main">
-        <div class="main-box" v-for="(item,index) in searchlist" :key="index">
-          <div class="main-img">
-            <img :src="item.mainImgUrl" alt />
-          </div>
+      <div v-else>
+        <ul>
+          <li @click="updateall">综合</li>
+          <li @click="updatenew">最新</li>
+          <li @click="updateprices('asc')">价格</li>
+        </ul>
+        <div class="none" v-if="flags">
+          <span @click="updateprices('desc')">价格从高到低</span>
+          <span @click="updateprices('asc')">价格从低到高</span>
+        </div>
+        <div class="main">
+          <div class="main-box" v-for="(item,index) in searchlist" :key="index">
+            <div class="main-img">
+              <img :src="item.mainImgUrl" alt />
+            </div>
 
-          <div class="space-box">
-            <p class="space-show">{{item.shortTitle}}</p>
-            <p class="spaceprice">
-              ￥{{item.salesPrice}}
-              <span class="newprice">￥23.5</span>
-            </p>
+            <div class="space-box">
+              <p class="space-show">{{item.shortTitle}}</p>
+              <p class="spaceprice">
+                ￥{{item.salesPrice}}
+                <span class="newprice">￥23.5</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +73,8 @@ export default {
       text: "",
       flag: true,
       flags: false,
-      history: ""
+      history: "",
+      scrollTop: -1
     };
   },
   computed: {
@@ -79,10 +90,12 @@ export default {
     ...mapActions({
       getsearchlist: "index/getsearchlist"
     }),
+    listscroll(e) {
+      console.log(e);
+    },
     del() {
       wx.clearStorage();
-      this.history = "";
-      //  this.history = wx.getStorageSync("history");
+      this.history = [];
     },
     cencel(e) {
       this.flag = true;
@@ -173,12 +186,28 @@ export default {
         pageIndex
       });
     },
-    listscroll(e) {}
+    lower(e) {
+      this.pageIndex++;
+      console.log("this.pageindex", 1111);
+      console.log("this.pageIndex", this.pageIndex);
+      this.getlist(
+        this.queryWord,
+        this.queryType,
+        this.querySort,
+        this.pageIndex
+      );
+    }
   }
 };
 </script>
 
 <style scoped>
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+  width: 100%;
+}
 .top-search-box {
   width: 100%;
   height: 20px;
@@ -250,6 +279,7 @@ export default {
   background: #f2f8f8;
   padding-top: 4%;
   flex-wrap: wrap;
+  height: auto;
 }
 .main-box {
   width: 48%;
@@ -278,7 +308,7 @@ export default {
   margin-left: 4%;
   height: 30px;
   line-height: 30px;
-  margin-left: 16%;
+  margin-left: 26%;
 }
 .top img {
   width: 20px;

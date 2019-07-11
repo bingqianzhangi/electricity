@@ -57,7 +57,7 @@ const mutations = {
         state.searchlist = payload.result;
     },
 }
-    //标签列表
+//标签列表
 
 export default {
     namespaced: true,
