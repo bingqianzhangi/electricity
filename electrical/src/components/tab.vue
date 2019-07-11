@@ -51,7 +51,10 @@ export default {
   data() {
     return {
       isup: true,
-      pageIndex:1
+      pageIndex: 1,
+      sortType: 1,
+      cid: 1,
+      
     };
   },
   computed: {
@@ -120,26 +123,19 @@ export default {
   },
   onReachBottom: function() {
     var that = this;
-    // 显示加载图标
-    wx.showLoading({
-      title: "玩命加载中"
-    });
     // 页数+1
-    pageIndex = that.pageIndex + 1;
-    wx.request({
-      url: `/api/open/product/category/productList/1.0.0?pageIndex=${pageIndex}`,
-      method: "POST",
-      // 请求头部
-      header: {
-        "content-type": "application/text"
-      },
-      success: function(res) {
-        // 回调函数
-        console.log(res)
-        // 隐藏加载框
-        wx.hideLoading();
-      }
+    let index = that.pageIndex+1;
+    that.pageIndex=index;
+    let cid = that.cid;
+    let sortType = that.sortType;
+    let addlist= that.Lists({
+      pageIndex: index,
+      cid: cid,
+      sortType: sortType
     });
+    //
+    console.log("that.list",that.list)
+    that.list.push(addlist)
   }
 };
 </script>
