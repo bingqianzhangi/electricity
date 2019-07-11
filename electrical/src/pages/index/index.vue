@@ -40,11 +40,10 @@ export default {
           url: "pages/classify/main"
         });
     },
-    search()
-    {
+    search() {
       wx.navigateTo({
-        url:"/pages/index/search/main"
-      })
+        url: "/pages/index/search/main"
+      });
     }
     // ...mapActions({
     //  Tabchange: "index/Tabchange"
