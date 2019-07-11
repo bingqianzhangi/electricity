@@ -1,18 +1,17 @@
 <template>
   <div>
     <div class="top-ipt">
-      <img src="../../../static/images/search.png" alt />
+      <img src="../../../static/images/search.png" alt @click="search" />
     </div>
     <div class="top-nav">
-      <scroll-view scroll-x class="scroll-header">
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
-        <span>今日推荐</span>
+      <scroll-view class="scroll-view_W" scroll-x>
+        <view id="green" class="scroll-view-item_W">今日推荐</view>
+        <view
+          v-for="(item,index) in lists"
+          :class="{active:index==isShow}"
+          :key="item.sortId"
+          @click="btn(item.cid,item.childs)"
+        >{{item.cname}}</view>
       </scroll-view>
     </div>
     <card></card>
@@ -30,24 +29,32 @@ export default {
   components: { card, products },
   computed: {
     ...mapState({
-      list: state => state.index.tablist
+      list: state => state.index.tablist,
+      lists: state => state.tab.list
     })
   },
   methods: {
-    handletab() {
-      console.log(1),
-        wx.navigateTo({
-          url: "pages/classify/main"
-        });
+    btn(id) {
+      wx.navigateTo({
+        url: `/pages/content/classify/main?cid=${id}`
+      });
     },
-    // ...mapActions({
-    //  Tabchange: "index/Tabchange"
-    // }),
+    search() {
+      wx.navigateTo({
+        url: "/pages/index/search/main"
+      });
+    },
+    ...mapActions({
+      Tabs: "tab/Tab"
+    })
   },
   onShow() {
     // this.Tabchange()
   },
-  created() {}
+  created() {},
+  mounted() {
+    this.Tabs();
+  }
 };
 </script>
 
@@ -133,6 +140,29 @@ export default {
   box-sizing: border-box;
 }
 
+.scroll-view_W {
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+  height: 100rpx;
+  background: #fff;
+  line-height: 94rpx;
+}
+
+.scroll-view_W view {
+  font-weight: 500;
+  font-size: 32rpx;
+  display: inline-block;
+  height: 100rpx;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 20rpx;
+}
+
+.active {
+  border-bottom: 6rpx solid #56d2bf;
+  color: #56d2bf;
+}
 .scroll-header {
   display: flex;
   white-space: nowrap;

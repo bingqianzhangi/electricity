@@ -23,6 +23,6 @@ export let shopPic = params => {
 }
 
 //商品详情底部弹框
-export let shopBounce = (id, params) => {
-    return request.post('/api/open/product/sku/query/'+id, params);
+export let shopBounce = params => {
+    return request.post(`/api/open/product/sku/query/1?pid=${params.pid}&vids=${params.vids}`);
 }
