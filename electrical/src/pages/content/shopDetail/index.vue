@@ -57,7 +57,7 @@
             </block>
         </div>
         <div class="footer_btns">
-            <button class="share_btn">分享赚<span>{{detailList.earnMoney}}</span></button>
+            <button class="share_btn" @click="share">分享赚<span>{{detailList.earnMoney}}</span></button>
             <button class="buy_btn" @click="handBuy">立即购买</button>
         </div>
         <div class="type_mack" v-if="show">
@@ -118,6 +118,11 @@ export default {
         handBuy(){
             wx.navigateTo({
                 url: "/pages/content/submitOrder/main"
+            });
+        },
+        share(){
+            wx.navigateTo({
+                url: "/pages/content/canavs/main"
             });
         }   
     },

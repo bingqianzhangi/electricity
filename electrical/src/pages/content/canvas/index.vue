@@ -4,7 +4,6 @@
   </div>
 </template>
 
-
 <script>
   const userInfo = {
     avatar: 'https://avatars2.githubusercontent.com/u/8192412?s=40&v=4',
