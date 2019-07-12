@@ -1,33 +1,18 @@
 <template>
   <div>
     <div>
-      <div class="swiper">
-        <swiper
-          class="cont"
-          @change="switchItem('switchItem',$event)"
-          :current="currentTab"
-          circular="true"
-          skip-hidden-item-layout="true"
-          :indicator-dots="indicatorDots"
-          :autoplay="autoplay"
-          :interval="interval"
-        >
-          <swiper-item v-for="(item,index) in list[0].items" :key="index">
-            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)" />
-          </swiper-item>
-        </swiper>
-      </div>
+        <Swiper/>
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">
-            <img :src="list[1].items[0].imgUrl" alt />
+            <img :src="list[1].items[0].imgUrl" @click="clcikImg(list[1].items[0].contentValue)" alt>
           </div>
           <div class="top-right">
             <div class="top-right-img">
-              <img :src="list[1].items[1].imgUrl" alt />
+              <img :src="list[1].items[1].imgUrl" @click="clcikImg(list[1].items[1].contentValue)" alt>
             </div>
             <div class="data-img">
-              <img :src="list[1].items[2].imgUrl" alt />
+              <img :src="list[1].items[2].imgUrl" @click="clcikImg(list[1].items[2].contentValue)" alt>
             </div>
           </div>
         </div>
@@ -119,6 +104,7 @@
 <script>
 import good from "@/components/good";
 import goodpic from "@/components/goodpic";
+import Swiper from "@/components/swiper.vue";
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
@@ -131,7 +117,8 @@ export default {
   },
   components: {
     good,
-    goodpic
+    goodpic,
+    Swiper
   },
   computed: {
     ...mapState({
@@ -156,13 +143,6 @@ export default {
     switchItem: function(prompt, res) {
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
-    },
-    clcikImg(item) {
-      console.log("1111", item);
-      this.getBanner({ siid: item.contentValue });
-      wx.navigateTo({
-        url: "/pages/content/labelDetail/main"
-      });
     }
   },
   mounted() {
