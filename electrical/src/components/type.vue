@@ -91,10 +91,7 @@ export default {
         },
         defaulType(i,item) {
             console.log('qq',item.vid)
-            // this.list[0]=item.vid;
-            // console.log('qq1111',this.list[0])
             console.log('ffff',this.list.splice(0,1,item.vid))
-            console.log('ffff111',this.list)
             this.defaul = i;
             this.getBounce({
                 pid:item.pid,
@@ -103,21 +100,29 @@ export default {
         },
         sizeType(i,item) {
             this.size = i;
-            this.list[1]=item.vid;
-            console.log('hhshshhs',this.list)
+            // console.log('hhshshhs',this.list)
+            // this.list.splice(0,2,item.vid)
+            // for(var i=0;i<this.list.length;i++){
+            //     this.list=this.list[1];//数组的索引是从0开始的
+            //     console.log('111',arrvalue);//把取出的值打印在控制台上
+            // }
+            // this.list.forEach((v,index)=>{
+            //     console.log('wew',v[1])
+            // })
             this.getBounce({
                 pid:item.pid,
-                vids:'['+this.list[1]+']'
+                vids:'['+this.list+']'
             })
         },
-        // colorType(i,item){
-        //     this.color = i;
-        //     this.size=true,
-        //     // this.getBounce({
-        //     //     pid:item.pid,
-        //     //     vids:'['+item.vid+']'
-        //     // })
-        // }
+        colorType(i,item){
+            this.color = i;
+            this.size=true;
+            // console.log('hhshshhs',this.list.splice(2,item.vid))
+            this.getBounce({
+                pid:item.pid,
+                vids:'['+this.list+']'
+            })
+        }
     },
 }
 </script>

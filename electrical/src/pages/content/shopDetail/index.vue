@@ -122,10 +122,9 @@ export default {
         }   
     },
     async onShow() {
-        console.log('idii',this.detailList)
-        if(this.detailList.sstid!==null){
-            this.getRemind({sstid:this.detailList.sstid})
-        }
+        console.log('idii',typeof this.detailList.sstid)
+        console.log('idii',this.detailList.sstid)
+        this.getRemind({sstid:this.detailList.sstid})
     }
 }
 </script>

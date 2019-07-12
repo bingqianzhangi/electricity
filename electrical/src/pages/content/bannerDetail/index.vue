@@ -24,7 +24,7 @@
       </div>
       <div class="menu">
         <ul class="ul">
-          <li v-for="(item,index) in bannerList.anchors[0].products" :key="index">
+          <li v-for="(item,index) in bannerList.anchors[0].products" :key="index" @click="detail(item.pid)">
             <div class="menu-left">
               <img
                 :src="item.mainImgUrl"
@@ -53,16 +53,29 @@ export default {
       top: 1
     };
   },
+  computed: {
+    ...mapState({
+      bannerList: state => state.index.bannerList,
+      detailList: state => state.shopDetail.detailList
+    })
+  },
   methods: {
+    ...mapActions({
+      getDetail: "shopDetail/getDetail",
+      getChoose: "shopDetail/getChoose",
+      getPic: "shopDetail/getPic"
+      // getRemind:'shopDetail/getRemind',
+    }),
     viewScroll(e) {
       console.log(e);
       this.top = e.mp.detail.scrollTop;
+    },
+    detail(id){
+      this.getDetail({ pid: id });
+      this.getChoose({ pid: id });
+      this.getPic({ pid: id, basePid: "36482", userIdentity: "2" });
+      wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
-  },
-  computed: {
-    ...mapState({
-      bannerList: state => state.index.bannerList
-    })
   }
 };
 </script>
