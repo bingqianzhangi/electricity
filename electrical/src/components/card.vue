@@ -1,35 +1,6 @@
 <template>
   <div>
     <div>
-<<<<<<< HEAD
-      <div class="swiper">
-        <swiper
-          class="cont"
-          @change="switchItem('switchItem',$event)"
-          :current="currentTab"
-          circular="true"
-          skip-hidden-item-layout="true"
-          :indicator-dots="indicatorDots"
-          :autoplay="autoplay"
-          :interval="interval"
-        >
-          <swiper-item v-for="(item,index) in list[0].items" :key="index">
-            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)" />
-          </swiper-item>
-        </swiper>
-      </div>
-      <div class="top-img">
-        <div class="top-top">
-          <div class="top-left">
-            <img :src="list[1].items[0].imgUrl" alt />
-          </div>
-          <div class="top-right">
-            <div class="top-right-img">
-              <img :src="list[1].items[1].imgUrl" alt />
-            </div>
-            <div class="data-img">
-              <img :src="list[1].items[2].imgUrl" alt />
-=======
         <Swiper/>
       <div class="top-img">
         <div class="top-top">
@@ -42,16 +13,11 @@
             </div>
             <div class="data-img">
               <img :src="list[1].items[2].imgUrl" @click="clcikImg(list[1].items[2].contentValue)" alt>
->>>>>>> liangpengfei
             </div>
           </div>
         </div>
         <div class="top-bottom">
-<<<<<<< HEAD
-          <img :src="list[3].pictUrl" alt />
-=======
           <img :src="list[3].pictUrl" @click="clcikImg(list[3].items[1])" alt>
->>>>>>> liangpengfei
         </div>
       </div>
       <div class="main-sift">
@@ -128,25 +94,18 @@
         </div>
       </div>
       <div class="main-sift-goods">
-<<<<<<< HEAD
-        <good :message="list[12].items"></good>
-=======
           <good :message="list[12].items"></good>
         </div>
->>>>>>> liangpengfei
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   <!-- </div> -->
 </template>
 
 <script>
 import good from "@/components/good";
 import goodpic from "@/components/goodpic";
-<<<<<<< HEAD
-=======
 import Swiper from "@/components/swiper.vue";
->>>>>>> liangpengfei
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
@@ -159,12 +118,8 @@ export default {
   },
   components: {
     good,
-<<<<<<< HEAD
-    goodpic
-=======
     goodpic,
     Swiper
->>>>>>> liangpengfei
   },
   computed: {
     ...mapState({
@@ -189,16 +144,6 @@ export default {
     switchItem: function(prompt, res) {
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
-<<<<<<< HEAD
-    },
-    clcikImg(item) {
-      console.log("1111", item);
-      this.getBanner({ siid: item.contentValue });
-      wx.navigateTo({
-        url: "/pages/content/labelDetail/main"
-      });
-=======
->>>>>>> liangpengfei
     }
   },
   mounted() {

@@ -1,16 +1,7 @@
 <template>
   <div>
     <div class="main-sift-goods">
-<<<<<<< HEAD
-      <div
-        class="main-sift-every"
-        v-for="(item,i) in message"
-        :key="i"
-        @click="shopDetail(item.jumpUrl,item)"
-      >
-=======
       <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl)">
->>>>>>> liangpengfei
         <img :src="item.imgUrl" class="main-sift-every-img" />
         <div class="main-sift-every-div">{{item.title}}</div>
         <h2>￥{{item.salesPrice}}</h2>
@@ -19,40 +10,6 @@
   </div>
 </template>
 <script>
-<<<<<<< HEAD
-import { mapState, mapActions } from "vuex";
-import { getParams } from "@/utils/getParams";
-
-export default {
-  props: ["message"],
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapState({
-      detailList: state => state.shopDetail.detailList
-    })
-  },
-  methods: {
-    ...mapActions({
-      getDetail: "shopDetail/getDetail",
-      getChoose: "shopDetail/getChoose",
-      getPic: "shopDetail/getPic"
-      // getRemind:'shopDetail/getRemind',
-    }),
-    shopDetail(id, item) {
-      // console.log(getParams(id).businessId)
-      console.log("dddd", this.detailList);
-      console.log("111222", item);
-      let pId = getParams(id).businessId;
-      this.getDetail({ pid: pId });
-      this.getChoose({ pid: pId });
-      this.getPic({ pid: pId, basePid: "36482", userIdentity: "2" });
-      // this.getRemind({sstid:this.detailList.sstid})
-      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
-    }
-  }
-=======
 import { mapState, mapActions } from 'vuex';
 import { getParams } from '@/utils/getParams';
 export default {
@@ -71,7 +28,6 @@ export default {
       wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
   },
->>>>>>> liangpengfei
 };
 </script>
 
@@ -159,10 +115,6 @@ export default {
   padding-left: 3%;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> liangpengfei
 .scroll-header {
   display: flex;
   white-space: nowrap;
@@ -172,10 +124,6 @@ export default {
   width: 74px;
   display: inline-block;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> liangpengfei
 .container {
   flex: 1;
 }
@@ -210,8 +158,4 @@ export default {
 .nav.active {
   color: #16cc80;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> liangpengfei

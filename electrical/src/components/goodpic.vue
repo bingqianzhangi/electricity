@@ -24,10 +24,4 @@ export default {
   width: 96%;
   border-radius: 22px;
 }
-<<<<<<< HEAD
 </style>
-
-
-=======
-</style>
->>>>>>> liangpengfei
