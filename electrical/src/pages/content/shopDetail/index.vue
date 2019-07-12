@@ -122,8 +122,8 @@ export default {
             });
         },
         share(){
-            wx.reLaunch({
-                url: "/pages/content/canavs/main"
+            wx.navigateTo({
+                url: "/pages/content/canvas/main"
             })
             this.Canavs({
                 pid:this.detailList.pid
