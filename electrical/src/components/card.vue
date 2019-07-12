@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-        <Swiper/>
+      <Swiper/>
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">

@@ -168,3 +168,4 @@ export default {
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
   }
+</style>
