@@ -1,8 +1,8 @@
-import { TabList ,getTab} from "../../services/index";
+import { TabList, getTab } from "../../services/index";
 const state = {
   list: [],
-  parentId:0,
-  Lists:[]
+  parentId: 0,
+  Lists: []
 }
 //派生数据
 const getters = {
@@ -11,13 +11,13 @@ const getters = {
 //异步改变
 const actions = {
   async Tab({ commit }, payload) {
-    let params={}
-    params.parentId=state.parentId;
+    let params = {}
+    params.parentId = state.parentId;
     let data = await TabList(params);
     commit('SetTabList', data)
   },
   async getTabList({ commit }, payload) {
-    console.log('payload...',payload)
+    console.log('payload...', payload)
     let data = await getTab(payload);
     // console.log(data)
     commit('getTabLists', data)

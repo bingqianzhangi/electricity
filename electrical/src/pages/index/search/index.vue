@@ -33,16 +33,21 @@
 
       <div v-else>
         <ul>
-          <li @click="updateall">综合</li>
-          <li @click="updatenew">最新</li>
-          <li @click="updateprices('asc')">价格</li>
+          <li @click="updateall" :class="activeflag1?'live':''">综合</li>
+          <li @click="updatenew" :class="activeflag2?'live':''">最新</li>
+          <li @click="updateprices('asc')" :class="activeflag3?'live':''">价格</li>
         </ul>
         <div class="none" v-if="flags">
           <span @click="updateprices('desc')">价格从高到低</span>
           <span @click="updateprices('asc')">价格从低到高</span>
         </div>
         <div class="main">
-          <div class="main-box" v-for="(item,index) in searchlist" :key="index" @click="buy(item.pid)">
+          <div
+            class="main-box"
+            v-for="(item,index) in searchlist"
+            :key="index"
+            @click="buy(item.pid)"
+          >
             <div class="main-img">
               <img :src="item.mainImgUrl" alt />
             </div>
@@ -73,7 +78,10 @@ export default {
       flag: true,
       flags: false,
       history: "",
-      scrollTop: -1
+      scrollTop: -1,
+      activeflag1: true,
+      activeflag2: false,
+      activeflag3: false
     };
   },
   computed: {
@@ -110,6 +118,9 @@ export default {
       console.log(this.text);
     },
     updateall() {
+      this.activeflag1 = true;
+      this.activeflag2 = false;
+      this.activeflag3 = false;
       (this.queryWord = this.text),
         (this.queryType = 0),
         (this.querySort = "asc"),
@@ -122,6 +133,9 @@ export default {
       );
     },
     async updatenew() {
+      this.activeflag2 = true;
+      this.activeflag1 = false;
+      this.activeflag3 = false;
       (this.queryWord = this.text),
         (this.queryType = 1),
         (this.querySort = "asc"),
@@ -168,6 +182,9 @@ export default {
       this.flag = false;
     },
     updateprices(sort) {
+      this.activeflag3 = true;
+      this.activeflag2 = false;
+      this.activeflag1 = false;
       this.flags = !this.flags;
       this.queryType = 2;
       this.querySort = sort;
@@ -199,7 +216,7 @@ export default {
         this.pageIndex
       );
     },
-    buy(id){
+    buy(id) {
       this.getDetail({ pid: id });
       this.getChoose({ pid: id });
       this.getPic({ pid: id, basePid: "36482", userIdentity: "2" });
@@ -210,6 +227,9 @@ export default {
 </script>
 
 <style scoped>
+.live {
+  color: red;
+}
 .wrap {
   display: flex;
   flex-direction: column;
@@ -362,7 +382,7 @@ ul {
 ul li {
   list-style: none;
   width: 33%;
-  color: #77747b;
+  /* color: #77747b; */
   font-size: 14px;
 }
 </style>

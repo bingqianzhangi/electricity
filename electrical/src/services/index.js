@@ -17,7 +17,7 @@ export let search = params => {
 }
 //首页标签
 export let labelquery = params => {
-    console.log('124567',params)
+    console.log('124567', params)
     return request.post(`https://upapi.jinaup.com/api/open/sepcial/query/1.0.0?siid=${params.siid}`);
 }
 
@@ -27,7 +27,7 @@ export let TabList = params => {
 }
 // https://upapi.jinaup.com/api/open/product/category/productList/1.0.0
 //tab列表
-export let getTab=params=>{
-    console.log('params',params)
+export let getTab = params => {
+    console.log('params', params)
     return request.post(`/api/open/product/category/productList/1.0.0?pageIndex=${params.pageIndex}&cid=${params.cid}&sortType=${params.sortType}`);
 }
