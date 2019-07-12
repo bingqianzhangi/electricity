@@ -33,7 +33,7 @@
                         </block>
                     </div>
                     <div class="type_params" @click="buy">
-                        <span>{{type.skuName}}</span>
+                        <span>{{type.skuName || ''}}</span>
                         <img src="/static/images/jt.png" class="arrow" alt="">
                     </div>                 
                 </div>
@@ -67,6 +67,7 @@
             :salesPrice="detailList.salesPrice"
             :mainImgUrl="detailList.mainImgUrl"
             :pid="detailList.pid"
+            :list="list"
             @closeShow="close" />
         </div>
     </div>
@@ -78,7 +79,8 @@ import { mapState, mapActions } from 'vuex'
 export default {
     data() {
         return {
-            show:false
+            show:false,
+            list:[]
         }
     },
     components: {
@@ -91,7 +93,7 @@ export default {
             picList:state=>state.shopDetail.picList,
             remind:state=>state.shopDetail.remind,
             type:state=>state.shopDetail.type
-        })
+        }),
     },
     methods: {
         ...mapActions({
@@ -104,6 +106,7 @@ export default {
             let arr=this.chooseList.map((item,index)=>{
                 return item.attributeValueRelationVoList[0].vid;
             })
+            this.list=arr;
             this.getBounce({
                 pid:this.chooseList[0].attributeValueRelationVoList[0].pid,
                 vids:'['+arr+']'

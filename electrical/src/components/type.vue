@@ -17,11 +17,27 @@
                 </dd>
             </dl>
             <div class="type_data">
-                <div class="data" v-for="(item,index) in chooseList" :key="item.aid">
-                    <span>{{item.aname}}</span>
+                <div class="data" v-if="chooseList">
+                    <span>{{chooseList[0].aname}}</span>
                     <div>
-                        <block v-for="(v,i) in item.attributeValueRelationVoList" :key="item.sortId">
-                            <span :class="i==ind?'active':''" @click="style(i,v)">{{v.vname}}</span>
+                        <block v-for="(v,i) in chooseList[0].attributeValueRelationVoList" :key="i">
+                            <span :class="i==defaul?'active':''" @click="defaulType(i,v)">{{v.vname}}</span>
+                        </block>
+                    </div>
+                </div>
+                <div class="data" v-if="chooseList.length>=1 && chooseList[1]">
+                    <span>{{chooseList[1].aname}}</span>
+                    <div>
+                        <block v-for="(v,i) in chooseList[1].attributeValueRelationVoList" :key="i">
+                            <span :class="i==size?'active':''" @click="sizeType(i,v)">{{v.vname}}</span>
+                        </block>
+                    </div>
+                </div>
+                <div class="data" v-if="chooseList.length>=2 && chooseList[2]">
+                    <span>{{chooseList[2].aname}}</span>
+                    <div>
+                        <block v-for="(v,i) in chooseList[2].attributeValueRelationVoList" :key="i">
+                            <span :class="i==color?'active':''" @click="colorType(i,v)">{{v.vname}}</span>
                         </block>
                     </div>
                 </div>
@@ -42,11 +58,13 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 export default {
-    props: ["hasShow", "chooseList", "salesPrice", "mainImgUrl", "pid"],
+    props: ["hasShow", "chooseList", "salesPrice", "mainImgUrl", "pid","list"],
     data() {
         return {
             num:1,
-            ind:0,
+            defaul:0,
+            size:0,
+            color:0,
             flag: true
         }
     },
@@ -71,15 +89,35 @@ export default {
         sure(){
             this.$emit('closeShow');
         },
-        style(i,item) {
-            console.log('qq',item)
-            this.ind = i;
-            console.log('leixing ',this.type)
+        defaulType(i,item) {
+            console.log('qq',item.vid)
+            // this.list[0]=item.vid;
+            // console.log('qq1111',this.list[0])
+            console.log('ffff',this.list.splice(0,1,item.vid))
+            console.log('ffff111',this.list)
+            this.defaul = i;
             this.getBounce({
                 pid:item.pid,
-                vids:'['+item.vid+']'
+                vids:'['+this.list+']'
             })
-        }
+        },
+        sizeType(i,item) {
+            this.size = i;
+            this.list[1]=item.vid;
+            console.log('hhshshhs',this.list)
+            this.getBounce({
+                pid:item.pid,
+                vids:'['+this.list[1]+']'
+            })
+        },
+        // colorType(i,item){
+        //     this.color = i;
+        //     this.size=true,
+        //     // this.getBounce({
+        //     //     pid:item.pid,
+        //     //     vids:'['+item.vid+']'
+        //     // })
+        // }
     },
 }
 </script>
