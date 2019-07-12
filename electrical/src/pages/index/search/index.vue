@@ -42,13 +42,12 @@
           <span @click="updateprices('asc')">价格从低到高</span>
         </div>
         <div class="main">
-          <div class="main-box" v-for="(item,index) in searchlist" :key="index">
+          <div class="main-box" v-for="(item,index) in searchlist" :key="index" @click="buy(item.pid)">
             <div class="main-img">
               <img :src="item.mainImgUrl" alt />
             </div>
-
             <div class="space-box">
-              <p class="space-show">{{item.shortTitle}}</p>
+              <p class="space-show">{{item.title}}</p>
               <p class="spaceprice">
                 ￥{{item.salesPrice}}
                 <span class="newprice">￥23.5</span>
@@ -88,7 +87,10 @@ export default {
   },
   methods: {
     ...mapActions({
-      getsearchlist: "index/getsearchlist"
+      getsearchlist: "index/getsearchlist",
+      getDetail: "shopDetail/getDetail",
+      getChoose: "shopDetail/getChoose",
+      getPic: "shopDetail/getPic"
     }),
     listscroll(e) {
       console.log(e);
@@ -196,6 +198,12 @@ export default {
         this.querySort,
         this.pageIndex
       );
+    },
+    buy(id){
+      this.getDetail({ pid: id });
+      this.getChoose({ pid: id });
+      this.getPic({ pid: id, basePid: "36482", userIdentity: "2" });
+      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
     }
   }
 };

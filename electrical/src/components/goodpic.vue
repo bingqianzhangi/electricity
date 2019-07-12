@@ -25,3 +25,5 @@ export default {
   border-radius: 22px;
 }
 </style>
+
+

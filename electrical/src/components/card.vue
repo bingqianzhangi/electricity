@@ -1,23 +1,38 @@
 <template>
   <div>
     <div>
-        <Swiper/>
+      <div class="swiper">
+        <swiper
+          class="cont"
+          @change="switchItem('switchItem',$event)"
+          :current="currentTab"
+          circular="true"
+          skip-hidden-item-layout="true"
+          :indicator-dots="indicatorDots"
+          :autoplay="autoplay"
+          :interval="interval"
+        >
+          <swiper-item v-for="(item,index) in list[0].items" :key="index">
+            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)" />
+          </swiper-item>
+        </swiper>
+      </div>
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">
-            <img :src="list[1].items[0].imgUrl" @click="clcikImg(list[1].items[0].contentValue)" alt>
+            <img :src="list[1].items[0].imgUrl" alt />
           </div>
           <div class="top-right">
             <div class="top-right-img">
-              <img :src="list[1].items[1].imgUrl" @click="clcikImg(list[1].items[1].contentValue)" alt>
+              <img :src="list[1].items[1].imgUrl" alt />
             </div>
             <div class="data-img">
-              <img :src="list[1].items[2].imgUrl" @click="clcikImg(list[1].items[2].contentValue)" alt>
+              <img :src="list[1].items[2].imgUrl" alt />
             </div>
           </div>
         </div>
         <div class="top-bottom">
-          <img :src="list[3].pictUrl" @click="clcikImg(list[3].items[1])" alt>
+          <img :src="list[3].pictUrl" alt />
         </div>
       </div>
       <div class="main-sift">
@@ -94,18 +109,16 @@
         </div>
       </div>
       <div class="main-sift-goods">
-          <good :message="list[12].items"></good>
-        </div>
+        <good :message="list[12].items"></good>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
   <!-- </div> -->
 </template>
 
 <script>
 import good from "@/components/good";
 import goodpic from "@/components/goodpic";
-import Swiper from "@/components/swiper.vue";
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
@@ -118,8 +131,7 @@ export default {
   },
   components: {
     good,
-    goodpic,
-    Swiper
+    goodpic
   },
   computed: {
     ...mapState({
@@ -144,6 +156,13 @@ export default {
     switchItem: function(prompt, res) {
       let oIndex = res.mp.detail.current;
       this.currentTab = oIndex;
+    },
+    clcikImg(item) {
+      console.log("1111", item);
+      this.getBanner({ siid: item.contentValue });
+      wx.navigateTo({
+        url: "/pages/content/labelDetail/main"
+      });
     }
   },
   mounted() {
