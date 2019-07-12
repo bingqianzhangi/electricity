@@ -7,11 +7,11 @@
         :key="i"
         @click="shopDetail(item.jumpUrl,item)"
       >
-        <img :src="item.imgUrl" class="main-sift-every-img" />
-        <div class="main-sift-every-div">{{item.title}}</div>
-        <h2>￥{{item.salesPrice}}</h2>
-      </div>
+      <img :src="item.imgUrl" class="main-sift-every-img" />
+      <div class="main-sift-every-div">{{item.title}}</div>
+      <h2>￥{{item.salesPrice}}</h2>
     </div>
+  </div>
   </div>
 </template>
 <script>
@@ -43,10 +43,10 @@ export default {
       this.getDetail({ pid: pId });
       this.getChoose({ pid: pId });
       this.getPic({ pid: pId, basePid: "36482", userIdentity: "2" });
-      // this.getRemind({sstid:this.detailList.sstid})
-      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
+      wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
-  }
+  },
+
 };
 </script>
 
@@ -130,19 +130,13 @@ export default {
 .top-nav {
   width: 100%;
   height: 50px;
-  line-height: 50px;
-  padding-left: 3%;
-  box-sizing: border-box;
-}
+  box-sizing: border-box;}
 .scroll-header {
   display: flex;
   white-space: nowrap;
 }
 .scroll-header span {
-  height: 50px;
-  width: 74px;
-  display: inline-block;
-}
+  display: inline-block;}
 .container {
   flex: 1;
 }
@@ -173,8 +167,5 @@ export default {
 .nav:nth-of-type(odd) {
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
-}
-.nav.active {
-  color: #16cc80;
-}
+  }
 </style>
