@@ -5,7 +5,7 @@
     </div>
     <div class="top-nav">
       <scroll-view class="scroll-view_W" scroll-x>
-        <view id="green" class="scroll-view-item_W">今日推荐</view>
+        <view id="green" class="scroll-view-item_W active">今日推荐</view>
         <view
           v-for="(item,index) in lists"
           :class="{active:index==isShow}"
@@ -24,7 +24,9 @@ import products from "@/components/products";
 import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   data() {
-    return {};
+    return {  
+
+    };
   },
   components: { card, products },
   computed: {
@@ -66,6 +68,10 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 2%;
+}
+  .active {
+  border-bottom: 6rpx solid #56d2bf;
+  color: #56d2bf;
 }
 .top-ipt img {
   height: 30px;
