@@ -6,7 +6,7 @@
 
 <script>
   const userInfo = {
-    avatar: 'https://avatars2.githubusercontent.com/u/8192412?s=40&v=4',
+    avatar: '/static/images/logBg.png',
     name: '积纳有品小程序'
   }
   const qrCode = 'https://upapi.jinaup.com/static/image/QRCode.png';

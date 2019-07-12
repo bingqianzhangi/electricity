@@ -35,3 +35,8 @@ export let productCouponList = params => {
 export let buyShop = params => {
     return request.post(`/api/open/order/prepare/1.0.0?orderChannel=${params.orderChannel}&skuPidNums=${params.skuPidNums}`);
 }
+
+
+export let getCanvas = params => {
+    return request.post(`/api/open/product/info/1.0.0?pid=${params.pid}`);
+}

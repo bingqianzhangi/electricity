@@ -98,7 +98,8 @@ export default {
     methods: {
         ...mapActions({
             getRemind:'shopDetail/getRemind',
-            getBounce:'shopDetail/getBounce'
+            getBounce:'shopDetail/getBounce',
+            Canavs:'shopDetail/Canavs',
         }),
         buy(){
             this.show = true;
@@ -121,9 +122,12 @@ export default {
             });
         },
         share(){
-            wx.navigateTo({
+            wx.reLaunch({
                 url: "/pages/content/canavs/main"
-            });
+            })
+            this.Canavs({
+                pid:this.detailList.pid
+            })
         }   
     },
     async onShow() {

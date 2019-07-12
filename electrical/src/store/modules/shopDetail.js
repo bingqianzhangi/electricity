@@ -1,4 +1,4 @@
-import { shopDel, shopRemind, shopChoose, shopPic, shopBounce, buyShop } from "@/services/shopDetail";
+import { shopDel, shopRemind, shopChoose, shopPic, shopBounce, buyShop, getCanvas } from "@/services/shopDetail";
 
 const state = {
     detailList:[],
@@ -44,6 +44,11 @@ const actions = {
         let data = await buyShop(payload);
         console.log('getBounce',data);
         commit('upBuy',data);
+    },
+    async Canvas({ commit }, payload) {
+        let data = await getCanvas(payload);
+        console.log('buyShop',data);
+        commit('upCanvas',data);
     }
 }
 
@@ -65,6 +70,9 @@ const mutations = {
         state.type=payload;
     },
     upBuy(state,payload){
+        console.log(state)
+    },
+    upCanvas(state,payload){
         console.log(state)
     }
 }
