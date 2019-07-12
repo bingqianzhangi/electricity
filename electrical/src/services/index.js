@@ -18,7 +18,7 @@ export let search = params => {
 //首页标签
 export let labelquery = params => {
     console.log('124567',params)
-    return request.post('https://upapi.jinaup.com/api/open/sepcial/query/1.0.0', params);
+    return request.post(`https://upapi.jinaup.com/api/open/sepcial/query/1.0.0?siid=${params.siid}`);
 }
 
 // https://upapi.jinaup.com/api/open/product/category/sub/1

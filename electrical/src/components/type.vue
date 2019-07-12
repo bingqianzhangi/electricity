@@ -41,7 +41,6 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-
 export default {
     props: ["hasShow", "chooseList", "salesPrice", "mainImgUrl", "pid"],
     data() {

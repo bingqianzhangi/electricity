@@ -6,7 +6,7 @@
         alt
       />
       <scroll-view class="scroll-view-vertical" scroll-y="true" @scroll="viewScroll">
-        <h4>大牌化妆品小样专区</h4>
+        <h4>{{labelList.specialName}}</h4>
       </scroll-view>
     </div>
     <scroll-view scroll-y="true" style="height: 600px">
@@ -16,7 +16,7 @@
           <span class="dian"></span>
         </p>
         <p class="font">
-          <span>大牌化妆品小样专区</span>
+          <span>{{labelList.specialName}}</span>
         </p>
         <p class="right">
           <span class="dian"></span>
@@ -25,15 +25,15 @@
       </div>
       <div class="menu">
         <ul class="ul">
-          <li>
+          <li v-for="(item,index) in bannerList.anchors[0].products" :key="index">
             <div class="menu-left">
               <img
-                src="http://haitao.nos.netease.com/2f4e333d71dc4d428f30e77c282c092f1560506032485jwvx00uo11727.jpg"
+                :src="item.mainImgUrl"
                 alt
               />
             </div>
             <div class="menu-right">
-              <p class="left-font">雅诗兰黛 鲜活亮采果萃水30ml(清爽型)</p>
+              <p class="left-font">{{item.title}}</p>
               <div class="right-box">
                 <span class="price">¥ 49.9</span>
                 <span class="profit">赚 ¥3.92</span>
@@ -137,6 +137,7 @@
 </template>
 
 <script>
+import { mapState ,mapActions } from 'vuex'
 export default {
   data() {
     return {

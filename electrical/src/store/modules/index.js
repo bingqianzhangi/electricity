@@ -3,7 +3,11 @@ const state = {
     list: [],
     productlist: [],
     searchlist: [],
-    bannerList: []
+    //点击轮播图数据
+    bannerList:[],
+    swiperList:[],
+    //标签页数据
+    labelList:[]
 }
 //派生数据
 const getters = {
@@ -48,6 +52,8 @@ const mutations = {
     //精选好物
     Goothings(state, payload) {
         state.list = payload.result;
+        state.swiperList = payload.result;
+        console.log("state.list...", state.list)
     },
     //为你精选
     productData(state, payload) {
@@ -56,8 +62,14 @@ const mutations = {
     searchData(state, payload) {
         state.searchlist = payload.result;
     },
-}
     //标签列表
+    labelData(state, payload){
+        state.bannerList = payload;
+        state.labelList = payload;
+        console.log("bannerlist...", payload)
+    }
+}
+//标签列表
 
 export default {
     namespaced: true,

@@ -1,23 +1,27 @@
 <template>
   <div class="wrap">
-    <div class="wrap_head">
-      <div class="wrap_head_top"></div>
-      <div class="wrap_head_active">
-        <div class="wrap_head_active_title">
-          <span>蜗牛</span>
-          <span>15660086220</span>
-        </div>
-        <div class="wrap_head_active_city">
-          <div class="wrap_head_active_city_left">
-            <icon type="info" />
-            <span>北京市北京市海淀区八维</span>
-          </div>
-          <div class="wrap_head_active_city_right">
-            <span>></span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <header>
+            <p>订单中包含海外购商品，海关要求必须提供真实姓名和身份证号进行实名认证，且实名人与支付人必须一致，错误信息可能导致无法清关，平台保证您的信息安全，绝不对外泄露！</p>
+            <div class="address">
+                <div class="add_info">
+                   <div class="info">
+                        <h3><b>zs</b><b>1354646464</b></h3>
+                        <div>
+                            <img src="/static/images/locationIcon.png" class="add_icon" alt="">
+                            <span>河北省秦皇岛市山海关区嘻嘻嘻嘻嘻嘻嘻嘻寻寻寻寻寻寻</span>
+                        </div>
+                   </div>
+                   <div class="arrow" @click="address"><img src="/static/images/jt.png" alt=""></div>
+                </div>
+                <ul>
+                    <li v-for="(item,index) in list" :key="index" ></li>
+                </ul>
+            </div>
+            <div class="save_per">
+                <span>保存人</span>
+                <span>330324199408130218</span>
+            </div>
+    </header>  
     <div class="wrap_cont">
       <div class="wrap_cont_box_data_div">
         <img class="wrap_cont_box_data_div_img" alt />
@@ -64,13 +68,140 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      list:[{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            },{
+                bg:'#5d9afc'
+            },{
+                bg:'#fc5d7b'
+            }]
+    }
+  },
+  methods: {
+    address(){
+      wx.navigateTo({
+          url: "/pages/my/myaddress/main"
+      });
+    }
+  },
+};
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .wrap {
   width: 100%;
-  height: auto;
   position: relative;
+}
+header{
+    width: 100%;
+    height: 238px;
+    background: #f3f7f7;
+    p{
+        width: 100%;
+        height: 68px;
+        padding: 10px;
+        box-sizing: border-box;
+        background: #fff6f6;
+        color: #484848;
+        font-size: 12px;
+    }
+    .address{
+        width: 95%;
+        height: 100px;
+        margin: 10px;
+        background: #fff;
+        border-radius: 5px;
+        position:relative;
+        .add_info{
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            box-sizing: border-box;
+            .info{
+                width: 307px; 
+                h3{
+                    display: flex;
+                    margin-bottom: 10px;
+                    >b:nth-child(1){
+                        margin-right: 10px;
+                    }
+                }
+                >div{
+                    display: flex;
+                    img{
+                        width: 14px;
+                        height: 14px;
+                        margin-right: 5px;
+                    }
+                    span{
+                        flex: 1;
+                    }
+                }
+            }
+            .arrow{
+                height: 100%;
+                display: flex;
+                align-items: center;
+                >img{
+                   width: 14px;
+                   height: 14px;
+                }
+            }
+        }
+        ul{
+            width: 100%;
+            display: flex;
+            position:absolute;
+            overflow:hidden;
+            left:-21rpx;
+            bottom:2rpx;
+            margin-left:22rpx;
+            li{
+                display:inline-block;
+                padding:0 10rpx;
+                background:#fc5d7b;
+                border:4rpx solid #fc5d7b;
+                color:#333;
+                transform:skew(-50deg);
+                margin-right: 6px;
+            }
+        }
+    }
 }
 .wrap_head {
   width: 100%;
@@ -104,7 +235,7 @@ export default {};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 10rpx solid orangered;
+  border-bottom: 10rpx solid blue;
   padding-bottom: 20rpx;
 }
 .wrap_head_active_city_left {
@@ -129,7 +260,7 @@ icon {
 .wrap_cont_box_data_div_img {
   width: 25%;
   height: 184rpx;
-  background: orangered;
+  background: blue;
   margin: 0 3%;
 }
 .wrap_cont_box_data_div_title_g {
@@ -199,13 +330,14 @@ icon {
   width: 25%;
   height: 120rpx;
   border: 0;
-  background: orangered;
+  background: blue;
   font-size: 36rpx;
   border-radius: 0;
   line-height: 120rpx;
+  color: #fff;
 }
 .wrap_bot_left_l {
-  color: orangered;
+  color: #333;
   margin-left: 3%;
 }
 .wrap_bot_left_l span {

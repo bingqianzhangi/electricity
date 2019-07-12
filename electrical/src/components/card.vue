@@ -13,26 +13,26 @@
           :interval="interval"
         >
           <swiper-item v-for="(item,index) in list[0].items" :key="index">
-            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)"/>
+            <image :src="item.imgUrl" class="swiper" @click="clcikImg(item)" />
           </swiper-item>
         </swiper>
       </div>
       <div class="top-img">
         <div class="top-top">
           <div class="top-left">
-            <img :src="list[1].items[0].imgUrl" alt>
+            <img :src="list[1].items[0].imgUrl" alt />
           </div>
           <div class="top-right">
             <div class="top-right-img">
-              <img :src="list[1].items[1].imgUrl" alt>
+              <img :src="list[1].items[1].imgUrl" alt />
             </div>
             <div class="data-img">
-              <img :src="list[1].items[2].imgUrl" alt>
+              <img :src="list[1].items[2].imgUrl" alt />
             </div>
           </div>
         </div>
         <div class="top-bottom">
-          <img :src="list[3].pictUrl" alt>
+          <img :src="list[3].pictUrl" alt />
         </div>
       </div>
       <div class="main-sift">
@@ -78,7 +78,7 @@
         <div class="main-sift-goods">
           <good :message="list[8].items"></good>
           <div class="top-bottom">
-            <img :src="list[9].pictUrl" alt>
+            <img :src="list[9].pictUrl" alt />
           </div>
         </div>
       </div>
@@ -109,10 +109,10 @@
         </div>
       </div>
       <div class="main-sift-goods">
-          <good :message="list[12].items"></good>
-        </div>
+        <good :message="list[12].items"></good>
       </div>
     </div>
+  </div>
   <!-- </div> -->
 </template>
 
@@ -141,8 +141,14 @@ export default {
   methods: {
     ...mapActions({
       Goothing: "index/Index",
-      getBanner: "index/Query"
+      getBannerData:'index/Query'
     }),
+    //点击标签页
+    clcikImg(item){
+        console.log(item)
+        this.getBannerData({siid:item})
+        wx.navigateTo({ url: "/pages/content/bannerDetail/main" });
+    },
     switchTab: function(prompt, res) {
       let oIndex = res.mp.currentTarget.dataset.current;
       this.currentTab = oIndex;
@@ -153,11 +159,10 @@ export default {
     },
     clcikImg(item) {
       console.log("1111", item);
-      this.getBanner({siid:item.contentValue});
+      this.getBanner({ siid: item.contentValue });
       wx.navigateTo({
         url: "/pages/content/labelDetail/main"
       });
-
     }
   },
   mounted() {

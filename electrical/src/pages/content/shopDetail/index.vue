@@ -75,7 +75,6 @@
 <script>
 import Type  from '@/components/type.vue'
 import { mapState, mapActions } from 'vuex'
-
 export default {
     data() {
         return {
@@ -114,7 +113,7 @@ export default {
             this.show=false;
         },
         handBuy(){
-             wx.navigateTo({
+            wx.navigateTo({
                 url: "/pages/content/submitOrder/main"
             });
         }   

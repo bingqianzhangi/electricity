@@ -134,7 +134,6 @@ export default {
   padding-left: 3%;
   box-sizing: border-box;
 }
-
 .scroll-header {
   display: flex;
   white-space: nowrap;
@@ -144,7 +143,6 @@ export default {
   width: 74px;
   display: inline-block;
 }
-
 .container {
   flex: 1;
 }
