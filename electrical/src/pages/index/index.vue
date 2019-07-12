@@ -11,7 +11,7 @@
           :class="{active:index==isShow}"
           :key="item.sortId"
           @click="btn(item.cid,item.childs)"
-        >{{item.cname}}</view>
+        >{{item.cname}}</view>      
       </scroll-view>
     </div>
     <card></card>

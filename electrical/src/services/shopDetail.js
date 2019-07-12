@@ -26,3 +26,8 @@ export let shopPic = params => {
 export let shopBounce = params => {
     return request.post(`/api/open/product/sku/query/1?pid=${params.pid}&vids=${params.vids}`);
 }
+
+//购买信息
+export let buyShop = params => {
+    return request.post(`/api/open/order/prepare/1.0.0?orderChannel=${params.orderChannel}&skuPidNums=${params.skuPidNums}`);
+}

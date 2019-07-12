@@ -1,5 +1,5 @@
 <template>
-    <form class="newaddress" @submit="formSubmit" report-submit>
+    <form class="newaddress"  report-submit>
         <div class="message">
             <div class="receiving">
                 <input type="text" placeholder="收货人" v-model="current.consignee">
@@ -14,11 +14,14 @@
             </div>
             <div class="receiving">
                 <picker mode="region" 
-                        @change="changeRegin" 
-                        
+                        @change="bindRegionChange" 
+                        v-model="current.region"
                         >
                     <view>
-                        <input class="pikers"  v-model="region" placeholder="所在地区"/>
+
+                      <span v-if='!current.region.length'>所在地区</span>
+                      <span v-else>{{current.region[0]}}，{{current.region[1]}}，{{current.region[2]}}</span>
+                  
                     </view>
                 </picker>
                 <image src="/static/images/lt.svg"></image>
@@ -33,7 +36,7 @@
                 <span>标签</span>
                 <div class="tags">
                     <span v-for="(item,index) in tags" :key='index' 
-                    @click="pitch(index)" :class="ind===index?'active':null">{{item}}</span>
+                    @click="pitch(index)" :class="ind===index?'active':null">{{item.title}}</span>
                 </div>
             </div>
             <div class="default">
@@ -41,99 +44,115 @@
                 <switch :checked="checked" @change="stautsChange" />
             </div>
         </div>
-        <button form-type="submit">保存</button>
+        <button @click="submit">保存</button>
     </form>
 </template>
 <script>
 import { mapState,mapMutations,mapActions} from 'vuex'
 export default {
-    props:{
-
-    },
-    components:{
-
-    },
     data(){
         return {
-           region: null,
-           tags: ['家','公司','学校','其它'],
-           ind: null,
-           checked: false
+            labelList:[{
+                title:'家',
+                id:0
+            },{
+                title:'公司',
+                id:1
+            },{
+                title:'学校',
+                id:2
+            },{
+                title:'其他',
+                id:3
+            }],
+            ind:null
         }
     },
-    computed:{
-        ...mapState({
-            current: state => state.index.current
-        })
+    computed: {
+      ...mapState({
+        current: state => state.my.current
+      })
     },
-    methods:{
-        ...mapActions({
-            createNew: 'index/createNew'
-        }),
-        ...mapMutations({
-            updateState: 'index/updateState'
-        }),
-        changeRegin(e) {
-            const {code,value} = e.mp.detail
-            console.log(code)
-            console.log(e.target.value)
-            this.region = e.target.value
-            this.current.provinceId = code[0]
-            this.current.cityId = code[1]
-            this.current.areaId = code[2]
-            this.current.provinceName = value[0]
-            this.current.cityName = value[1]
-            this.current.areaName = value[2]
-        },
-        pitch(index) {
-            this.ind = index
-            this.current.addressTag = index
-        },
-        async formSubmit(e) {
-
-            // 判断收获人是否为空
-            if(!this.current.consignee) {
-                wx.showToast({
-                    title: '请输入收货人姓名', //提示的内容
-                    icon: 'none' //图标
-                })
-                return false
-            }
-             // 判断手机号是否符合规范
-            if(!/^1(3|4|5|7|8)\d{9}$/.test(this.current.consigneePhone) || !/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(this.current.consigneePhone)) {
-                wx.showToast({
-                    title: '请输入手机或座机', //提示的内容
-                    icon: 'none'  //图标
-                })
-                return false
-            }
-            // 判断详细地址是否为空
-            if(!this.current.address) {
-                wx.showToast({
-                    title: '请输入详细的地址', //提示的内容
-                    icon: 'none' //图标
-                })
-                return false
-            }
-            let data = await this.createNew(this.current)
-            console.log('data...',data)
-        },
-        stautsChange() {
-            this.checked = !this.checked
-            if(this.checked) {
-                this.current.state = 0
-            } else {
-                this.current.state = 1
-            }
+    methods: {
+      ...mapActions({
+        addAddressActions: "my/addAddressActions"
+      }),
+      changelabel(ind){
+        this.ind=ind
+      },
+      bindRegionChange: function(e) {
+        this.current.region = [...e.target.value];
+        this.current.code = [...e.target.code];
+      },
+      switchChange(e) {
+        this.current.state = e.target.value ? 1 : 0;
+      },
+      async submit() {
+        // 判断收货人是否为空
+        if (!this.current.consignee) {
+          wx.showToast({
+            title: "请输入收货人", //提示的内容,
+            icon: "none" //图标,
+          });
+          return;
         }
-    },
-    created(){
-
-    },
-    mounted(){
-
+        // 判断手机号是否符合规范
+        if (
+          !/^1(3|4|5|7|8)\d{9}$/.test(this.current.consigneePhone) ||
+          !/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(
+            this.current.consigneePhone
+          )
+        ) {
+          wx.showToast({
+            title: "请输入面试联系人的手机或座机", //提示的内容,
+            icon: "none" //图标,
+          });
+          return;
+        }
+        // 判断收货地址是否为空
+        if (this.current.region.length == 0) {
+          wx.showToast({
+            title: "请输入收货地址", //提示的内容,
+            icon: "none" //图标,
+          });
+          return;
+        }
+        // 判断详细收货地址是否为空
+        if (!this.current.address) {
+          wx.showToast({
+            title: "请输入详细收货地址", //提示的内容,
+            icon: "none" //图标,
+          });
+          return;
+        }
+        this.current.addressTag = this.ind;
+        let data = await this.addAddressActions({
+          provinceId: this.current.code[0],
+          provinceName: this.current.region[0],
+          cityId: this.current.code[1],
+          cityName: this.current.region[1],
+          areaId: this.current.code[2],
+          areaName: this.current.region[2],
+          ...this.current
+        });
+        // console.log('data...',data)
+        if (data.res_code == 1) {
+          wx.showModal({
+            title: "温馨提示", //提示的标题,
+            content: data.message, //提示的内容,
+            showCancel: false,
+            confirmText: "确定", //确定按钮的文字，默认为取消，最多 4 个字符,
+            confirmColor: "#197DBF", //确定按钮的文字颜色,
+            success: res => {
+              if (res.confirm) {
+                wx.navigateTo({ url: "/pages/myaddress/main" });
+              }
+            }
+          });
+        }
     }
-}
+  }
+};
 </script>
 <style scoped lang="scss">
     .newaddress {

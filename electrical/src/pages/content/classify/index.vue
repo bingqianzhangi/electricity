@@ -2,7 +2,7 @@
   <div class="wrap">
     <view class="section section_gap">
       <scroll-view class="scroll-view_W" scroll-x>
-        <view id="green" class="scroll-view-item_W">今日推荐</view>
+        <view id="green" class="scroll-view-item_W" @click="goback()">今日推荐</view>
         <view
           v-for="(item,index) in list"
           :class="{active:index==isShow}"
@@ -12,7 +12,7 @@
         >{{item.cname}}</view>
       </scroll-view>
     </view>
-    <Tab :childrens="children" :cid="cid" :optionsId='optionsId' />
+    <Tab :childrens="children" :cid="cid" :optionsId="optionsId" />
   </div>
 </template>
 <script>
@@ -24,7 +24,7 @@ export default {
       children: [],
       cid: 1,
       isShow: 0,
-      optionsId:1
+      optionsId: 1
     };
   },
   components: {
@@ -51,6 +51,11 @@ export default {
         cid: this.cid,
         sortType: 1
       });
+    },
+    goback() {
+      wx.navigateBack({
+        delta: 2
+      });
     }
   },
   mounted() {
@@ -58,7 +63,7 @@ export default {
   },
   onShow() {},
   onLoad: function(options) {
-    this.optionsId=options.cid
+    this.optionsId = options.cid;
     // this.Tabs(options)
   }
 };

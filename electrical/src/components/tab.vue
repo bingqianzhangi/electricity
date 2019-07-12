@@ -19,7 +19,7 @@
 
     <scroll-view scroll-y bindscrolltolower="lower" bindscroll="scroll">
       <view class="dls">
-        <view class="_dl" v-for="(item,index) in list" :key="index">
+        <view class="_dl" v-for="(item,index) in list" :key="index" @click="buy(item.pid,item)">
           <view class="_dt">
             <label for>
               <img :src="item.mainImgUrl" alt />
@@ -59,13 +59,17 @@ export default {
   },
   computed: {
     ...mapState({
-      list: state => state.tab.Lists
+      list: state => state.tab.Lists,
+      detailList: state => state.shopDetail.detailList
     })
   },
   onShow() {},
   methods: {
     ...mapActions({
-      Lists: "tab/getTabList"
+      Lists: "tab/getTabList",
+      getDetail: "shopDetail/getDetail",
+      getChoose: "shopDetail/getChoose",
+      getPic: "shopDetail/getPic"
     }),
     screen(id) {
       this.Lists({
@@ -104,6 +108,12 @@ export default {
         });
         this.isup = true;
       }
+    },
+    buy(id,item){
+      this.getDetail({ pid: id });
+      this.getChoose({ pid: id });
+      this.getPic({ pid: id, basePid: "36482", userIdentity: "2" });
+      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
     }
   },
   mounted() {

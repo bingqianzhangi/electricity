@@ -7,9 +7,16 @@
         :key="i"
         @click="shopDetail(item.jumpUrl,item)"
       >
+<<<<<<< HEAD
       <img :src="item.imgUrl" class="main-sift-every-img" />
       <div class="main-sift-every-div">{{item.title}}</div>
       <h2>￥{{item.salesPrice}}</h2>
+=======
+        <img :src="item.imgUrl" class="main-sift-every-img" />
+        <div class="main-sift-every-div">{{item.title}}</div>
+        <h2>￥{{item.salesPrice}}</h2>
+      </div>
+>>>>>>> b42fbcabcb53c118d62791031ade6ca95dc385cb
     </div>
   </div>
   </div>
@@ -43,10 +50,17 @@ export default {
       this.getDetail({ pid: pId });
       this.getChoose({ pid: pId });
       this.getPic({ pid: pId, basePid: "36482", userIdentity: "2" });
+<<<<<<< HEAD
       wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
   },
 
+=======
+      // this.getRemind({sstid:this.detailList.sstid})
+      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
+    }
+  }
+>>>>>>> b42fbcabcb53c118d62791031ade6ca95dc385cb
 };
 </script>
 
@@ -130,13 +144,27 @@ export default {
 .top-nav {
   width: 100%;
   height: 50px;
+<<<<<<< HEAD
   box-sizing: border-box;}
+=======
+  line-height: 50px;
+  padding-left: 3%;
+  box-sizing: border-box;
+}
+>>>>>>> b42fbcabcb53c118d62791031ade6ca95dc385cb
 .scroll-header {
   display: flex;
   white-space: nowrap;
 }
 .scroll-header span {
+<<<<<<< HEAD
   display: inline-block;}
+=======
+  height: 50px;
+  width: 74px;
+  display: inline-block;
+}
+>>>>>>> b42fbcabcb53c118d62791031ade6ca95dc385cb
 .container {
   flex: 1;
 }
@@ -167,4 +195,12 @@ export default {
 .nav:nth-of-type(odd) {
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
+<<<<<<< HEAD
   }
+=======
+}
+.nav.active {
+  color: #16cc80;
+}
+</style>
+>>>>>>> b42fbcabcb53c118d62791031ade6ca95dc385cb
