@@ -118,8 +118,11 @@ export default {
             });
         }   
     },
-    onReady(){
-         this.getRemind({sstid:this.detailList.sstid})
+    async onShow() {
+        console.log('idii',this.detailList)
+        if(this.detailList.sstid!==null){
+            this.getRemind({sstid:this.detailList.sstid})
+        }
     }
 }
 </script>

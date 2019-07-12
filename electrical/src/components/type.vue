@@ -20,7 +20,7 @@
                 <div class="data" v-for="(item,index) in chooseList" :key="item.aid">
                     <span>{{item.aname}}</span>
                     <div>
-                        <block v-for="(v,i) in item.attributeValueRelationVoList" :key="item.sortId">
+                        <block v-for="(v,i) in item.attributeValueRelationVoList" :key="item.panvrid">
                             <span :class="i==ind?'active':''" @click="style(i,v)">{{v.vname}}</span>
                         </block>
                     </div>
@@ -72,6 +72,7 @@ export default {
             this.$emit('closeShow');
         },
         style(i,item) {
+            this.$emit('styleType',i,item);
             console.log('qq',item)
             this.ind = i;
             console.log('leixing ',this.type)
