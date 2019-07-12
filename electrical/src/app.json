@@ -12,7 +12,8 @@
     "pages/content/shopDetail/main",
     "pages/content/submitOrder/main",
     "pages/content/classify/main",
-    "pages/content/labelDetail/main"
+    "pages/content/labelDetail/main",
+    "pages/content/bannerDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
