@@ -1,25 +1,20 @@
 <template>
   <div>
     <div class="main-sift-goods">
-<<<<<<< HEAD
       <div
         class="main-sift-every"
         v-for="(item,i) in message"
         :key="i"
         @click="shopDetail(item.jumpUrl,item)"
       >
-=======
-      <div class="main-sift-every" v-for="(item,i) in message" :key="i" @click="shopDetail(item.jumpUrl)">
->>>>>>> liangpengfei
-        <img :src="item.imgUrl" class="main-sift-every-img" />
-        <div class="main-sift-every-div">{{item.title}}</div>
-        <h2>￥{{item.salesPrice}}</h2>
-      </div>
+      <img :src="item.imgUrl" class="main-sift-every-img" />
+      <div class="main-sift-every-div">{{item.title}}</div>
+      <h2>￥{{item.salesPrice}}</h2>
     </div>
+  </div>
   </div>
 </template>
 <script>
-<<<<<<< HEAD
 import { mapState, mapActions } from "vuex";
 import { getParams } from "@/utils/getParams";
 
@@ -48,30 +43,10 @@ export default {
       this.getDetail({ pid: pId });
       this.getChoose({ pid: pId });
       this.getPic({ pid: pId, basePid: "36482", userIdentity: "2" });
-      // this.getRemind({sstid:this.detailList.sstid})
-      wx.navigateTo({ url: "/pages/content/shopDetail/main" });
-    }
-  }
-=======
-import { mapState, mapActions } from 'vuex';
-import { getParams } from '@/utils/getParams';
-export default {
-  props: ["message"],
-  components: {},
-  methods: {
-    ...mapActions({
-      getDetail:'shopDetail/getDetail'
-    }),
-    shopDetail(id){
-      // console.log(getParams(id).businessId)
-      let pId=getParams(id).businessId;
-      this.getDetail({
-        pid:pId
-      })
       wx.navigateTo({ url: '/pages/content/shopDetail/main' });
     }
   },
->>>>>>> liangpengfei
+
 };
 </script>
 
@@ -155,27 +130,13 @@ export default {
 .top-nav {
   width: 100%;
   height: 50px;
-  line-height: 50px;
-  padding-left: 3%;
-  box-sizing: border-box;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> liangpengfei
+  box-sizing: border-box;}
 .scroll-header {
   display: flex;
   white-space: nowrap;
 }
 .scroll-header span {
-  height: 50px;
-  width: 74px;
-  display: inline-block;
-}
-<<<<<<< HEAD
-
-=======
->>>>>>> liangpengfei
+  display: inline-block;}
 .container {
   flex: 1;
 }
@@ -206,12 +167,4 @@ export default {
 .nav:nth-of-type(odd) {
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
-}
-.nav.active {
-  color: #16cc80;
-}
-<<<<<<< HEAD
-</style>
-=======
-</style>
->>>>>>> liangpengfei
+  }
