@@ -25,9 +25,6 @@ export default {
             wx.navigateTo({ url: "/pages/content/bannerDetail/main" });
         }
     },
-    created(){
-        console.log('swiperList...',this.swiperList)
-    },
     computed:{
         ...mapState({
             swiperList:state=>state.index.swiperList[0].items

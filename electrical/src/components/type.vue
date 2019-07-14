@@ -89,9 +89,7 @@ export default {
         sure(){
             this.$emit('closeShow');
         },
-        defaulType(i,item) {
-            // console.log('qq',item.vid)
-            // console.log('ffff',this.list.splice(0,0,item.vid))
+        defaulType(i,item) { 
             let arr=this.list;
             arr.splice(0,1,item.vid)
             this.defaul = i;

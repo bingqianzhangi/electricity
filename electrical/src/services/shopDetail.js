@@ -3,7 +3,6 @@ import request from '@/utils/request';
 //商品详情信息
 export let shopDel = params => {
     // let data=JSON.stringify(params).replace(/\"/g, "").replace(/\{/g,"").replace(/\}/g,"");
-    // console.log(params.pid)
     return request.post(`/api/open/product/info/1.0.0?pid=${params.pid}`);
 }
 

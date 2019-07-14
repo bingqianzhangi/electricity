@@ -33,12 +33,8 @@ export default {
       getDetail: "shopDetail/getDetail",
       getChoose: "shopDetail/getChoose",
       getPic: "shopDetail/getPic"
-      // getRemind:'shopDetail/getRemind',
     }),
     shopDetail(id, item) {
-      // console.log(getParams(id).businessId)
-      console.log("dddd", this.detailList);
-      console.log("111222", item);
       let pId = getParams(id).businessId;
       this.getDetail({ pid: pId });
       this.getChoose({ pid: pId });

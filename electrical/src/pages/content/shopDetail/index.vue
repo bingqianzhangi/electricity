@@ -99,7 +99,7 @@ export default {
         ...mapActions({
             getRemind:'shopDetail/getRemind',
             getBounce:'shopDetail/getBounce',
-            Canavs:'shopDetail/Canavs',
+            getcanavs:'shopDetail/Canvas',
         }),
         buy(){
             this.show = true;
@@ -122,11 +122,11 @@ export default {
             });
         },
         share(){
-            wx.reLaunch({
-                url: "/pages/content/canavs/main"
-            })
-            this.Canavs({
+            this.getcanavs({
                 pid:this.detailList.pid
+            })
+            wx.navigateTo({
+                url: "/pages/content/canvas/main"
             })
         }   
     },

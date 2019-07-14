@@ -19,22 +19,18 @@ const actions = {
   async getTabList({ commit }, payload) {
     console.log('payload...',payload)
     let data = await getTab(payload);
-    // console.log(data)
     commit('getTabLists', data)
   },
 }
 //同步改变,改变数据的唯一途径
 const mutations = {
   SetTabList(state, payload) {
-    // console.log('pat',payload)
     state.list = payload.result;
     console.log("state.list...", state.list)
   },
   getTabLists(state, payload) {
-    // console.log('pat',payload)
     state.Lists = payload.result;
-    console.log("state.lISTS...", state.Lists)
-  },
+  }
 }
 export default {
   namespaced: true,

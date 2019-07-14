@@ -35,15 +35,12 @@ const actions = {
                 pageIndex: payload.pageIndex
             }
         );
-        console.log("payload", data)
         commit('searchData', data);
         return data;
     },
 
     async Query({ commit }, payload) {
-        console.log('payload....', payload)
         let data = await labelquery(payload);
-        console.log("data..", data)
         commit('labelData', data.result)
     }
 }
@@ -53,7 +50,6 @@ const mutations = {
     Goothings(state, payload) {
         state.list = payload.result;
         state.swiperList = payload.result;
-        console.log("state.list...", state.list)
     },
     //为你精选
     productData(state, payload) {
@@ -66,7 +62,6 @@ const mutations = {
     labelData(state, payload){
         state.bannerList = payload;
         state.labelList = payload;
-        console.log("bannerlist...", payload)
     }
 }
 //标签列表

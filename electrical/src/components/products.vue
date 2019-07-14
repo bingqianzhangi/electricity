@@ -57,7 +57,6 @@ export default {
       getRemind: "shopDetail/getRemind"
     }),
     shopDetail(id) {
-      console.log(id);
       let pId = getParams(id).businessId;
       this.getDetail({ pid: pId });
       this.getChoose({ pid: pId });

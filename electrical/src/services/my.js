@@ -5,6 +5,5 @@ export let addressFn = () => {
 }
 //添加收货地址
 export let addAddressFn = (params) => {
-    // console.log('params...',params)
     return request.post('/api/open/user/address/addAddress/1.0.0',params)
 }

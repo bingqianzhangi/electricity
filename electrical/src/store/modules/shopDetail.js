@@ -5,7 +5,8 @@ const state = {
     chooseList:[],
     picList:[],
     remind:'',
-    type:{}
+    type:{},
+    canvasList:{}
 }
 
 //派生数据
@@ -42,13 +43,11 @@ const actions = {
     },
     async getbuy({ commit },payload) {
         let data = await buyShop(payload);
-        console.log('getBounce',data);
         commit('upBuy',data);
     },
     async Canvas({ commit }, payload) {
         let data = await getCanvas(payload);
-        console.log('buyShop',data);
-        commit('upCanvas',data);
+        commit('upCanvas',data.result);
     }
 }
 
@@ -73,7 +72,7 @@ const mutations = {
         console.log(state)
     },
     upCanvas(state,payload){
-        console.log(state)
+        state.canvasList=payload;
     }
 }
 
